@@ -238,7 +238,7 @@ ehthumbs.db
 out/
 out_wp81/bin
 out_wp81/obj
-UnityPackages/
+UnityPackages/*.unitypackage
 *~HEAD
 
 ## Ignore Unity Folders and Files
