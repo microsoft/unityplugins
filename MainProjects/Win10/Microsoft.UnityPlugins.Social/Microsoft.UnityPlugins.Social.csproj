@@ -125,10 +125,6 @@
     <Content Include="Properties\Microsoft.UnityPlugins.Social.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\sanjeevdwivedi\facebook-winclient-sdk\Source\Facebook.Client-UWA\Facebook.Client-UWA.csproj">
-      <Project>{0df5ea97-4f29-4748-b928-010cf83c606d}</Project>
-      <Name>Facebook.Client-UWA</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Microsoft.UnityPlugins.Common\Microsoft.UnityPlugins.Common.csproj">
       <Project>{71103c48-6d71-4e2f-b6b4-6d09a133559d}</Project>
       <Name>Microsoft.UnityPlugins.Common</Name>

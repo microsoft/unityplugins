@@ -113,31 +113,31 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\Enums.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\Enums.cs">
       <Link>Enums.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\LicenseInformation.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\LicenseInformation.cs">
       <Link>LicenseInformation.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\ListingInformation.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\ListingInformation.cs">
       <Link>ListingInformation.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\ProductLicense.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\ProductLicense.cs">
       <Link>ProductLicense.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\ProductListing.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\ProductListing.cs">
       <Link>ProductListing.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\PurchaseResults.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\PurchaseResults.cs">
       <Link>PurchaseResults.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\ReceiptResponse.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\ReceiptResponse.cs">
       <Link>ReceiptResponse.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\Store.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\Store.cs">
       <Link>Store.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Store\UnfulfilledConsumable.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Store\UnfulfilledConsumable.cs">
       <Link>UnfulfilledConsumable.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

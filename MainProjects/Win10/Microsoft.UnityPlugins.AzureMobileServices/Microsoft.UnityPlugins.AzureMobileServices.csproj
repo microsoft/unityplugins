@@ -113,13 +113,13 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Azure\AzureMobileServices.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Azure\AzureMobileServices.cs">
       <Link>AzureMobileServices.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Azure\MobileServiceAuthenticationProvider.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Azure\MobileServiceAuthenticationProvider.cs">
       <Link>MobileServiceAuthenticationProvider.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Azure\MobileServiceUser.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Azure\MobileServiceUser.cs">
       <Link>MobileServiceUser.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

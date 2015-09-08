@@ -1,6 +1,5 @@
 ﻿{
   "dependencies": {
-    "Microsoft.BingAds.SDK": "9.3.8",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
   },
   "frameworks": {

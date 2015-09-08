@@ -113,13 +113,13 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Common\CallbackResponse.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Common\CallbackResponse.cs">
       <Link>CallbackResponse.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Common\DebugLog.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Common\DebugLog.cs">
       <Link>DebugLog.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Common\Utils.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Common\Utils.cs">
       <Link>Utils.cs</Link>
     </Compile>
     <Compile Include="MissingScaffoldingException.cs" />

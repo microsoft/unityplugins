@@ -114,31 +114,40 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\Notifications.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\Cortana.cs">
+      <Link>Cortana.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\Notifications.cs">
       <Link>Notifications.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\PeriodicUpdateRecurrence.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\PeriodicUpdateRecurrence.cs">
       <Link>PeriodicUpdateRecurrence.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\PushNotificationChannel.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\PushNotificationChannel.cs">
       <Link>PushNotificationChannel.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\RoamingSettings.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\RawNotifications.cs">
+      <Link>RawNotifications.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\RoamingSettings.cs">
       <Link>RoamingSettings.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\TextUtils.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\SettingsPane.cs">
+      <Link>SettingsPane.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\TextUtils.cs">
       <Link>TextUtils.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\Tiles.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\Tiles.cs">
       <Link>Tiles.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\TileTemplateType.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\TileTemplateType.cs">
       <Link>TileTemplateType.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\Toasts.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\Toasts.cs">
       <Link>Toasts.cs</Link>
     </Compile>
-    <Compile Include="..\..\Microsoft.UnityPlugins.Core\ToastTemplateType.cs">
+    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\ToastTemplateType.cs">
       <Link>ToastTemplateType.cs</Link>
     </Compile>
     <Compile Include="Speech.cs" />
@@ -150,6 +159,11 @@
       <Project>{71103c48-6d71-4e2f-b6b4-6d09a133559d}</Project>
       <Name>Microsoft.UnityPlugins.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\Microsoft.UnityPlugins.Core.csproj">
+      <Link>Microsoft.UnityPlugins.Core.csproj</Link>
+    </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
