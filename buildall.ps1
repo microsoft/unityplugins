@@ -82,27 +82,43 @@ WriteMessage "==========================================" "magenta"
 # copy over the newly generated DLLs to the samples
 # AzureMobileServices
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.AzureMobileServices\Release\*.pdb Samples\AzureMobileServices\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.AzureMobileServices\Release\*.dll Samples\AzureMobileServices\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.AzureMobileServices\Release\AnyCPU\*.pdb Samples\AzureMobileServices\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.AzureMobileServices\Release\AnyCPU\*.dll Samples\AzureMobileServices\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 
 # Store
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Store\Release\*.pdb Samples\StoreTest\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Store\Release\*.dll Samples\StoreTest\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Store\Release\AnyCPU\*.pdb Samples\StoreTest\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Store\Release\AnyCPU\*.dll Samples\StoreTest\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 
 # Core
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Core\Release\*.pdb Samples\CoreTest\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Core\Release\*.dll Samples\CoreTest\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Core\Release\AnyCPU\*.pdb Samples\CoreTest\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Core\Release\AnyCPU\*.dll Samples\CoreTest\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 
 # Cortana (keeping this separate for now - lots of Cortana specific assets, will later merge with Core)
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Core\Release\*.pdb Samples\Cortana\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Core\Release\*.dll Samples\Cortana\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Core\Release\AnyCPU\*.pdb Samples\Cortana\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Core\Release\AnyCPU\*.dll Samples\Cortana\Assets\Plugins\WSA
+exitIfFailed "xcopying file(s)"
 
 #create the x86,x64 and ARM folders if they don't exist. Advertising SDK is architecture specific
 New-Item -ItemType Directory -Force -Path Samples\Advertising\Assets\Plugins\WSA\x86
@@ -111,27 +127,45 @@ New-Item -ItemType Directory -Force -Path Samples\Advertising\Assets\Plugins\WSA
 
 # Advertising x86 files
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.pdb Samples\Advertising\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.dll Samples\Advertising\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x86\*.pdb Samples\Advertising\Assets\Plugins\WSA\x86
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x86\*.dll Samples\Advertising\Assets\Plugins\WSA\x86
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x86\*.winmd Samples\Advertising\Assets\Plugins\WSA\x86
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x86\*.pri Samples\Advertising\Assets\Plugins\WSA\x86
+exitIfFailed "xcopying file(s)"
 
 # Advertising x64 files
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.pdb Samples\Advertising\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.dll Samples\Advertising\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x64\*.pdb Samples\Advertising\Assets\Plugins\WSA\x64
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x64\*.dll Samples\Advertising\Assets\Plugins\WSA\x64
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x64\*.winmd Samples\Advertising\Assets\Plugins\WSA\x64
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x64\*.pri Samples\Advertising\Assets\Plugins\WSA\x64
+exitIfFailed "xcopying file(s)"
 
 # Advertising ARM files
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.pdb Samples\Advertising\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.dll Samples\Advertising\Assets\Plugins
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\ARM\*.pdb Samples\Advertising\Assets\Plugins\WSA\ARM
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\ARM\*.dll Samples\Advertising\Assets\Plugins\WSA\ARM
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\ARM\*.winmd Samples\Advertising\Assets\Plugins\WSA\ARM
+exitIfFailed "xcopying file(s)"
 xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\ARM\*.pri Samples\Advertising\Assets\Plugins\WSA\ARM
+exitIfFailed "xcopying file(s)"
 
 WriteMessage "==========================================" "green"
 WriteMessage "Successfully Copied all binaries to Unity Samples" "green"
