@@ -20,6 +20,7 @@ Mostly a wrapper for Facebook
 #Build Instructions
  * Install Windows Azure SDK for Visual Studio 2015 from http://azure.microsoft.com/en-us/downloads/ 
  * Install the latest Microsoft Advertising SDK from http://adsinapps.microsoft.com/en-us/
+ * There are Two solutions 
  * [Working on making command line build possible using auto nuget store] In the meanwhile, make sure to open the UnityPlugins.sln in Win10 
  folder and build once manually to make sure that all releveant packages etc have been restored and built once.
  * Open a Developer Command for Visual Studio 2015 by pressing the Windows button and typing "Develper". This step is required to setup MSBuild in your path in the correct manner

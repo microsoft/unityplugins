@@ -165,7 +165,7 @@ namespace Microsoft.UnityPlugins
                             isListening = false;
                         }
                     }
-                    catch (Exception x)
+                    catch (Exception)
                     {
                         speechRecognizer.Dispose();
                         speechRecognizer = null;

@@ -38,7 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\MainProjects\Microsoft.UnityPlugins.Core\ToastTemplateType.cs">
+    <Compile Include="..\..\MainProjects\CommonSource\Microsoft.UnityPlugins.Core\ToastTemplateType.cs">
       <Link>ToastTemplateType.cs</Link>
     </Compile>
     <Compile Include="RoamingSettings.cs" />

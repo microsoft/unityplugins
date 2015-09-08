@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2068F5CE-5688-1A21-0C2F-070810CFDCCA}</ProjectGuid>
+    <ProjectGuid>{0DC3A9AA-D5DE-5841-CC53-179C2F3B9C6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -84,12 +84,13 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.UnityPlugins.Advertising">
-      <HintPath>Assets\Plugins\Microsoft.UnityPlugins.Advertising.dll</HintPath>
+    <Reference Include="Microsoft.UnityPlugins.AzureMobileServices">
+      <HintPath>Assets\Plugins\Microsoft.UnityPlugins.AzureMobileServices.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AdvertisingDemo.cs" />
+    <Compile Include="Assets\Scripts\AzureMobileServiceDemoScript.cs" />
+    <Compile Include="Assets\Scripts\TodoItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
