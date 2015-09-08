@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10">
+  <Identity Name="SatkritiSolutionsLLC.UnityPluginsTestApp" Publisher="CN=84BAE5FB-B227-4D89-914C-AC29FCCE7F03" Version="1.1.4.0" />
+  <mp:PhoneIdentity PhoneProductId="3a77b709-f461-456d-b3d7-d3d70da67a16" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>UnityPluginsTestApp</DisplayName>
+    <PublisherDisplayName>Satkriti Solutions LLC</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10069.0" MaxVersionTested="10.0.10069.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="StoreTest.App">
+      <uap:VisualElements DisplayName="UnityPluginsTestApp" Square150x150Logo="Assets\MediumTile.png" Square44x44Logo="Assets\SmallLogo.png" Description="StoreTest" BackgroundColor="#000000">
+        <uap:DefaultTile Wide310x150Logo="Assets\WideTile.png">
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

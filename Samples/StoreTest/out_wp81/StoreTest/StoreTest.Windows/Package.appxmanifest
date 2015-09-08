@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="StoreTest" Publisher="CN=DefaultCompany" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>StoreTest</DisplayName>
+    <PublisherDisplayName>DefaultCompany</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="StoreTest.App">
+      <m2:VisualElements DisplayName="StoreTest" Square150x150Logo="Assets\MediumTile.png" Square30x30Logo="Assets\SmallLogo.png" Description="StoreTest" ForegroundText="light" BackgroundColor="#000000">
+        <m2:DefaultTile DefaultSize="square150x150Logo" Wide310x150Logo="Assets\WideTile.png" />
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

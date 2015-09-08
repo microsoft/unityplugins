@@ -1,0 +1,6 @@
+Assembly-CSharp.dll
+UnityEngine.Analytics.dll
+Microsoft.UnityPlugins.Common.dll
+UnityEngine.UI.dll
+UnityEngine.Networking.dll
+Microsoft.UnityPlugins.Advertising.dll

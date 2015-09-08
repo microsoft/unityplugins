@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="SatkritiSolutionsLLC.UnityPluginsTestApp" Publisher="CN=84BAE5FB-B227-4D89-914C-AC29FCCE7F03" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="ee0565e6-6b42-45b1-861d-81b9f54e9956" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>UnityPluginsTestApp</DisplayName>
+    <PublisherDisplayName>Satkriti Solutions LLC</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="118e16a0-82fb-42e9-abf6-3f44639fcb6f.App">
+      <m3:VisualElements DisplayName="UnityPluginsTestApp" Square150x150Logo="Assets\MediumTile.png" Square44x44Logo="Assets\AppIcon.png" Description="StoreTest" ForegroundText="light" BackgroundColor="transparent">
+        <m3:DefaultTile DefaultSize="square150x150Logo" Square71x71Logo="Assets\SmallTile.png">
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+      </m3:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+  </Capabilities>
+</Package>

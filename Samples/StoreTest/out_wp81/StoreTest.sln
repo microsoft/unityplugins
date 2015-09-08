@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "StoreTest.Shared", "StoreTest\StoreTest.Shared\StoreTest.Shared.shproj", "{D550EBEE-7F16-4918-B2C6-7BEF519B3973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTest.Windows", "StoreTest\StoreTest.Windows\StoreTest.Windows.csproj", "{35D6339A-CE46-45E5-A16C-57F576011BFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTest.WindowsPhone", "StoreTest\StoreTest.WindowsPhone\StoreTest.WindowsPhone.csproj", "{D378C147-0ABA-4592-AB27-04F0DB138842}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		StoreTest\StoreTest.Shared\StoreTest.Shared.projitems*{35d6339a-ce46-45e5-a16c-57f576011bff}*SharedItemsImports = 4
+		StoreTest\StoreTest.Shared\StoreTest.Shared.projitems*{d550ebee-7f16-4918-b2c6-7bef519b3973}*SharedItemsImports = 13
+		StoreTest\StoreTest.Shared\StoreTest.Shared.projitems*{d378c147-0aba-4592-ab27-04f0db138842}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Master|ARM = Master|ARM
+		Master|x86 = Master|x86
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Debug|ARM.ActiveCfg = Debug|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Debug|ARM.Build.0 = Debug|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Debug|ARM.Deploy.0 = Debug|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Debug|x86.ActiveCfg = Debug|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Debug|x86.Build.0 = Debug|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Debug|x86.Deploy.0 = Debug|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Master|ARM.ActiveCfg = Master|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Master|ARM.Build.0 = Master|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Master|ARM.Deploy.0 = Master|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Master|x86.ActiveCfg = Master|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Master|x86.Build.0 = Master|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Master|x86.Deploy.0 = Master|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Release|ARM.ActiveCfg = Release|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Release|ARM.Build.0 = Release|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Release|ARM.Deploy.0 = Release|ARM
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Release|x86.ActiveCfg = Release|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Release|x86.Build.0 = Release|x86
+		{35D6339A-CE46-45E5-A16C-57F576011BFF}.Release|x86.Deploy.0 = Release|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Debug|ARM.Build.0 = Debug|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Debug|x86.ActiveCfg = Debug|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Debug|x86.Build.0 = Debug|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Debug|x86.Deploy.0 = Debug|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Master|ARM.ActiveCfg = Master|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Master|ARM.Build.0 = Master|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Master|ARM.Deploy.0 = Master|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Master|x86.ActiveCfg = Master|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Master|x86.Build.0 = Master|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Master|x86.Deploy.0 = Master|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Release|ARM.ActiveCfg = Release|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Release|ARM.Build.0 = Release|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Release|ARM.Deploy.0 = Release|ARM
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Release|x86.ActiveCfg = Release|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Release|x86.Build.0 = Release|x86
+		{D378C147-0ABA-4592-AB27-04F0DB138842}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

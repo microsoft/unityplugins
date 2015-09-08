@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Microsoft.UnityPlugins
+{
+    public class UnfulfilledConsumable
+    {
+        public string OfferId { get; set; }
+        public string ProductId { get; set; }
+        public Guid TransactionId { get; set; }
+
+    }
+}
