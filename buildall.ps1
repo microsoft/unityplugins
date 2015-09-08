@@ -1,10 +1,16 @@
 <#
-1. IMPORTANT: Make sure that you have set the path to the msbuild included with Visual Studio 
-as the $msbuild_vs variable below. Plugins do not build with .net msbuild
-2. Make sure that the  unity_exe variable is set to the correct path for Unity
-3. Run the following in your powershell to allow build script. Answer 'Y' to the question on allowing 
+
+- IMPORTANT: Make sure that you have set the path to the msbuild included with Visual Studio 
+   as the $msbuild_vs variable below. Plugins do not build with .net msbuild
+- Visual Studio 2015 is REQUIRED
+- Plugins only work on Windows 10 at the moment
+- Make sure that the $unity_exe variable is set to the correct path for Unity
+- Run the following in your powershell to allow build script. Answer 'Y' to the question on allowing 
    unsigned scripts to run.
 		'Set-ExecutionPolicy -Scope CurrentUser unrestricted'
+- Install Windows Azure SDK for Visual Studio 2015 from http://azure.microsoft.com/en-us/downloads/ 
+- Install the latest Microsoft Advertising SDK from http://adsinapps.microsoft.com/en-us/
+- Make sure you install the latest version of nuget from and set it in the $nuget_exe variable below
 #>
 
 #Set-ExecutionPolicy -Scope CurrentUser unrestricted
@@ -34,8 +40,20 @@ function WriteMessage($message, $color)
 	write-host $message -foreground $color
 }
 
+# IMPORTANT: MAKE SURE TO SET THESE VARIABLES TO YOUR ENVIRONMENT TO AVOID
+# BUILD FAILURES
 $msbuild_vs = "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe"
 $unity_exe = "C:\Program Files\Unity\Editor\unity.exe"
+$nuget_exe = "c:\tools\nuget.exe"
+
+# Restore nuget packages
+& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.sln
+exitIfFailed 'Nuget restore Store, Core, Azure project'
+
+& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Advertising.sln
+exitIfFailed 'Nuget restore Advertising'
+
+pause
 
 # AnyCPU - RELEASE
 # AnyCPU does not work for Advertising because the SDK itself is architecture specific
