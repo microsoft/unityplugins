@@ -137,4 +137,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="SpicNSpan"
+        AfterTargets="Clean">
+    <RemoveDir Directories="$(OUTDIR)"/>
+  </Target>
 </Project>
