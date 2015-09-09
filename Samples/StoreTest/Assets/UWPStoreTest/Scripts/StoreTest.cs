@@ -3,28 +3,50 @@ using UnityEngine.UI;
 using System.Collections;
 using Microsoft.UnityPlugins;
 
-public class LoadLicenseScript : MonoBehaviour
+public class StoreTest : MonoBehaviour
 {
     public Button loadLicenseXmlButton;
     public Text text;
+
+    private void prettyPrintErrors(string apiName, CallbackResponse response)
+    {
+        if(response.Status == CallbackStatus.Failure)
+        {
+            text.text = "API call failed.";
+            Debug.LogError(apiName + " API call failed");
+
+            if (response.Exception != null)
+            {
+                Debug.LogError(apiName + " Exception: " + response.Exception.Message);
+            }
+
+            Debug.LogError(apiName + " Exiting without doing anything");
+        }
+    }
+
     public void LoadLicenseXmlButton()
     {
         Debug.Log("LoadLicenseXmlButton clicked");
-//#if UNITY_EDITOR
-//            Debug.Log("Button Clicked");
-//            text.text = "Button Clicked";
-//#endif
 
         Store.LoadLicenseXMLFile((response) =>
         {
-            Debug.Log("Button Clicked");
-            text.text = "Windows Store Proxy xml file loaded successfully!";
+            Debug.Log("Invoking Callback");
+            
+            text.text = "Load License XML File finished";
+
+            prettyPrintErrors("LoadLicenseXml", response);
         });
     }
 
     public void IsInTrialApp()
     {
         Debug.Log("Is In Trial button clicked");
+
+#if UNITY_EDITOR
+        Debug.Log("Windows Store APIs cannot be called from the Unity Editor");
+        text.text = "Cannot call WinStore API from Editor";
+        return;
+#endif
 
         if (Store.IsInTrialMode())
         {
@@ -38,10 +60,17 @@ public class LoadLicenseScript : MonoBehaviour
 
     public void LoadListingInformationForApp()
     {
-        Debug.Log("Is In Trial button clicked");
+        Debug.Log("LoadListingInformation button clicked");
 
         Store.LoadListingInformation((response) =>
         {
+
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("LoadListingInformation", response);
+                return;
+            }
+
             text.text = "Finished Loading Listing Information";
             Debug.Log(response.Result.Description.ToString());
             foreach (var productListingKey in response.Result.ProductListings.Keys)
@@ -54,6 +83,12 @@ public class LoadLicenseScript : MonoBehaviour
     public void GetLicenseInformationForApp()
     {
         Debug.Log("Get License Information Button clicked");
+
+#if UNITY_EDITOR
+        Debug.Log("Windows Store APIs cannot be called from the Unity Editor");
+        text.text = "Cannot call WinStore API from Editor";
+        return;
+#endif
         text.text = "Got License Information";
         var licenseInformation = Store.GetLicenseInformation();
         Debug.Log("LicenseInformation: IsActive " + licenseInformation.IsActive.ToString());
@@ -68,7 +103,14 @@ public class LoadLicenseScript : MonoBehaviour
     public void GetProductLicenseForApp()
     {
         Debug.Log("Get product license clicked");
-        
+
+
+#if UNITY_EDITOR
+        Debug.Log("Windows Store APIs cannot be called from the Unity Editor");
+        text.text = "Cannot call WinStore API from Editor";
+        return;
+#endif
+
         Store.GetProductLicense("Durable1");
         text.text = "Got product license";
     }
@@ -79,6 +121,12 @@ public class LoadLicenseScript : MonoBehaviour
 
         Store.GetAppReceipt((response) =>
         {
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("GetAppReceipt", response);
+                return;
+            }
+
             text.text = "got app receipt";
             Debug.Log("App Receipt: " + response.Result);
         });
@@ -90,6 +138,12 @@ public class LoadLicenseScript : MonoBehaviour
 
         Store.GetProductReceipt("Consumable1", ((response) =>
         {
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("GetProductReceipt", response);
+                return;
+            }
+
             text.text = "got product receipt";
             Debug.Log("Product Receipt: " + response.Result);
         }));
@@ -97,8 +151,15 @@ public class LoadLicenseScript : MonoBehaviour
 
     public void LoadUnfulfilledConsumablesForApp()
     {
+        Debug.Log("LoadUnfulfilledConsumablesForApp called");
         Store.LoadUnfulfilledConsumables((response) =>
         {
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("LoadUnfulfilledConsumables", response);
+                return;
+            }
+
             Debug.Log("Loaded Unfulfilled consumables");
             foreach (var u in response.Result)
             {
@@ -113,6 +174,12 @@ public class LoadLicenseScript : MonoBehaviour
         System.Guid guid= new System.Guid("00000001-0000-0000-0000-000000000000");
         Store.ReportConsumableFulfillment("consumable1", guid, (response) =>
         {
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("ReportConsumablesFulfilled", response);
+                return;
+            }
+
             Debug.Log("Reported Consumable Fulfillment Result: " + response.Result.ToString());
             text.text = "Reported Consumable fulfillment Result: " + response.Result.ToString();
         });
@@ -133,6 +200,7 @@ public class LoadLicenseScript : MonoBehaviour
             }
             else
             {
+                prettyPrintErrors("RequestAppPurchase", response);
                 text.text = "Purchase failed";
             }
         });
@@ -143,16 +211,22 @@ public class LoadLicenseScript : MonoBehaviour
         Debug.Log("RequestinProductpPurchaseForApp begun");
         Store.RequestProductPurchase("Consumable1", (response) =>
         {
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("RequestProductPurchase", response);
+                return;
+            }
+
             text.text = "Purchase status: " + response.Result.Status.ToString();
             Debug.Log("Purchase Status: " + response.Result.Status.ToString());
             Debug.Log("Purchase OfferId: " + response.Result.OfferId);
             Debug.Log("Purchase ReceiptXml: " + response.Result.ReceiptXml);
 
-            Store.VerifyReceipt(response.Result.ReceiptXml, (ReceiptResponse) =>
-            {
-                Debug.Log("response: " + ReceiptResponse.Result.AppId);
-                Debug.Log("response: " + ReceiptResponse.Result.IsValidReceipt.ToString());
-            });
+            //Store.VerifyReceipt(response.Result.ReceiptXml, (ReceiptResponse) =>
+            //{
+            //    Debug.Log("response: " + ReceiptResponse.Result.AppId);
+            //    Debug.Log("response: " + ReceiptResponse.Result.IsValidReceipt.ToString());
+            //});
         });
     }
 }

@@ -53,7 +53,6 @@ exitIfFailed 'Nuget restore Store, Core, Azure project'
 & $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Advertising.sln
 exitIfFailed 'Nuget restore Advertising'
 
-pause
 
 # AnyCPU - RELEASE
 # AnyCPU does not work for Advertising because the SDK itself is architecture specific

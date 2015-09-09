@@ -25,17 +25,17 @@ namespace Microsoft.UnityPlugins
 
         public static void LoadListingInformation(Action<CallbackResponse<ListingInformation>> OnLoadListingFinished)
         {
-            OnLoadListingFinished(new CallbackResponse<ListingInformation>());
+            OnLoadListingFinished(new CallbackResponse<ListingInformation>() {  Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null});
         }
 
         public static void VerifyReceipt(string receipt, Action<CallbackResponse<ReceiptResponse>> OnReceiptVerified)
         {
-            OnReceiptVerified(new CallbackResponse<ReceiptResponse>());
+            OnReceiptVerified(new CallbackResponse<ReceiptResponse>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
         public static void VerifyReceipt(string receiptWebserviceUrl, string receipt, Action<CallbackResponse<ReceiptResponse>> OnReceiptVerified)
         {
-            OnReceiptVerified(new CallbackResponse<ReceiptResponse>());
+            OnReceiptVerified(new CallbackResponse<ReceiptResponse>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
         public static LicenseInformation GetLicenseInformation()
@@ -54,34 +54,34 @@ namespace Microsoft.UnityPlugins
         /// <param name="OnAppReceiptAcquired"></param>
         public static void GetAppReceipt(Action<CallbackResponse<string>> OnAppReceiptAcquired)
         {
-            OnAppReceiptAcquired(new CallbackResponse<string>());
+            OnAppReceiptAcquired(new CallbackResponse<string>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
         public static void GetProductReceipt(string productId, Action<CallbackResponse<string>> OnProductReceiptAcquired)
         {
-            OnProductReceiptAcquired(new CallbackResponse<string>());
+            OnProductReceiptAcquired(new CallbackResponse<string>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
 
         public static void LoadUnfulfilledConsumables(Action<CallbackResponse<List<UnfulfilledConsumable>>> OnLoadUnfulfilledConsumablesFinished)
         {
-            OnLoadUnfulfilledConsumablesFinished(new CallbackResponse<List<UnfulfilledConsumable>>());
+            OnLoadUnfulfilledConsumablesFinished(new CallbackResponse<List<UnfulfilledConsumable>>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
         public static void ReportConsumableFulfillment(string productId, Guid transactionId,
             Action<CallbackResponse<FulfillmentResult>> OnReportConsumableFulfillmentFinished)
         {
-            OnReportConsumableFulfillmentFinished(new CallbackResponse<FulfillmentResult>());
+            OnReportConsumableFulfillmentFinished(new CallbackResponse<FulfillmentResult>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = FulfillmentResult.ServerError });
         }
 
         public static void RequestAppPurchase(bool requireReceipt, Action<CallbackResponse<string>> OnAppPurchaseFinished)
         {
-            OnAppPurchaseFinished(new CallbackResponse<string>());
+            OnAppPurchaseFinished(new CallbackResponse<string>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
         public static void RequestProductPurchase(string productId, Action<CallbackResponse<PurchaseResults>> OnProductPurchaseFinished)
         {
-            OnProductPurchaseFinished(new CallbackResponse<PurchaseResults>());
+            OnProductPurchaseFinished(new CallbackResponse<PurchaseResults>() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure, Result = null });
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.UnityPlugins
         public static void LoadLicenseXMLFile(Action<CallbackResponse> callback, string licenseFilePath = null)
         {
             // invoke the callback for testing in editor
-            callback(new CallbackResponse());
+            callback(new CallbackResponse() { Exception = new Exception("Windows Store APIs cannot be called in the editor"), Status = CallbackStatus.Failure });
         }
     }
 }
