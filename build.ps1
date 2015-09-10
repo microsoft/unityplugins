@@ -1,5 +1,4 @@
 <#
-
 - IMPORTANT: Make sure that you have set the path to the msbuild included with Visual Studio 
    as the $msbuild_vs variable below. Plugins do not build with .net msbuild
 - Visual Studio 2015 is REQUIRED
