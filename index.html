@@ -30,17 +30,19 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
+	
       <section id="main_content" class="inner">
+		<br>
+			<center>
+				<a href="./store"">Store</a> | <a href=core>Core</a> |<a href=ads>Advertising</a>   | <a href=azure>Azure</a>
+			</center>
+		<br>
         <h3>
 <a id="welcome-to-unity-plugins-for-windows-store-apps-and-azure" class="anchor" href="#welcome-to-unity-plugins-for-windows-store-apps-and-azure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Unity Plugins for Windows Store apps and Azure.</h3>
 
-<blockquote>
-<p>Note: Windows Store APIs will work only when compiled and run as a Windows Store app. Even though the Unity Stubs are present and allow you to invoke the APIs within the Unity editor, none of the API calls are actually functional and will likely produce and error message or return an error. To actually use the APIs, you must export the project as a Universal Windows 10 XAML project.</p>
-</blockquote>
 
-<img src="images/export_to_unity.png" />
 
-<blockquote>
+
 <p>
 Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. This is required so that Windows APIs that require the Windows UI thread can run on it and then call any status callbacks back on the Unity thread.
 </p>
@@ -55,7 +57,13 @@ You should place the following line just after <em>Window.Current.Activate()</em
 Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
 </em>
 
+
 <blockquote>
+<p>Note: Windows Store APIs will work only when compiled and run as a Windows Store app. Even though the Unity Stubs are present and allow you to invoke the APIs within the Unity editor, none of the API calls are actually functional and will likely produce and error message or return an error. To actually use the APIs, you must export the project as a Universal Windows 10 XAML project.</p>
+</blockquote>
+
+<img src="images/export_to_unity.png" />
+
 
 </p>
       </section>
