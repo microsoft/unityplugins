@@ -38,14 +38,26 @@
 <p>Note: Windows Store APIs will work only when compiled and run as a Windows Store app. Even though the Unity Stubs are present and allow you to invoke the APIs within the Unity editor, none of the API calls are actually functional and will likely produce and error message or return an error. To actually use the APIs, you must export the project as a Universal Windows 10 XAML project.</p>
 </blockquote>
 
+<img src="/images/export_to_unity.png" />
+
+<blockquote>
+<p>
 Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. This is required so that Windows APIs that require the Windows UI thread can run on it and then call any status callbacks back on the Unity thread.
+</p>
 
-You should place the following line just after `Window.Current.Activate()` in `InitializeUnity` function in App.xaml.cs
+<p>
+You should place the following line just after <em>Window.Current.Activate()</em> in <em>InitializeUnity</em> function in App.xaml.cs
+</p>
 
-```
-            Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
-```
 
+<p>
+<em>
+Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
+</em>
+
+<blockquote>
+
+</p>
       </section>
     </div>
 
@@ -53,7 +65,6 @@ You should place the following line just after `Window.Current.Activate()` in `I
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Unity Plugins maintained by <a href="https://github.com/Microsoft">Microsoft</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
