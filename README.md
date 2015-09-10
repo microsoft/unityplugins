@@ -6,7 +6,7 @@ Documentation for Usage of the APIs is present at: http://microsoft.github.io/un
 *Following documentation only tells you how to build the packages*
 
 ##Store
-Contains licensing functionality
+Contains APIs for inapp purchases, license checks, catalog listing and receipt validation
 
 ##Core
 Contains utilities, tiles, toasts, badges etc.
