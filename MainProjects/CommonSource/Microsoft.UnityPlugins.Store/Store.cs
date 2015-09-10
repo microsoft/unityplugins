@@ -97,6 +97,7 @@ namespace Microsoft.UnityPlugins
                     if (OnLoadListingFinished != null)
                     {
                         Utils.RunOnUnityAppThread(() => { OnLoadListingFinished(new CallbackResponse<ListingInformation> { Result = null, Status = CallbackStatus.Failure, Exception = ex }); });
+                        return;
                     }
                 }
 
@@ -183,6 +184,7 @@ namespace Microsoft.UnityPlugins
                     if (OnReceiptVerified != null)
                     {
                         Utils.RunOnUnityAppThread(() => OnReceiptVerified(new CallbackResponse<ReceiptResponse> { Result = responseObject, Exception = null, Status = CallbackStatus.Success }));
+                        return;
                     }
                 }
                 catch (Exception ex)
@@ -191,6 +193,7 @@ namespace Microsoft.UnityPlugins
                     {
                         // return the results back on the Unity app thread
                         Utils.RunOnUnityAppThread(() => OnReceiptVerified(new CallbackResponse<ReceiptResponse> { Result = null, Exception = ex, Status = CallbackStatus.Failure }));
+                        return;
                     }
                 }
             });
@@ -432,6 +435,7 @@ namespace Microsoft.UnityPlugins
                 {
                     DebugLog.Log(LogLevel.Fatal, "Error loading license file. License simulator will give incorrect results!" + ex.ToString());
                     callback(new CallbackResponse { Exception = ex, Status = CallbackStatus.Failure });
+                    return;
                 }
             });
         }
