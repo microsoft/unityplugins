@@ -1,0 +1,831 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0 none;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+html {
+    font-size: 100.01%;
+}
+body {
+    color: #333333;
+    font-family: 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 80%;
+    line-height: 1.3;
+}
+html, body {
+    height: 100%;
+    margin: 0 0 1px;
+}
+a, a:link, a:visited {
+    color: #0066DD;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover, a:active {
+    color: #FF6600;
+    text-decoration: none;
+}
+.bold, strong {
+    font-weight: bold;
+}
+code {
+    font-family: 'Courier New',Courier,monospace;
+}
+em {
+    font-style: italic;
+}
+h1, .title, h2, h3, h4, h5, h6 {
+    color: #3A3E43;
+    font-weight: bold;
+    line-height: 1.25;
+}
+h1, .title {
+    font-size: 175%;
+}
+h2 {
+    font-size: 160%;
+    margin: 4px 0;
+}
+h3 {
+    font-size: 140%;
+    line-height: 1.4;
+    margin: 3px 0;
+}
+h4 {
+    font-size: 125%;
+    margin: 2px 0;
+}
+h5 {
+    font-size: 110%;
+}
+h6 {
+    font-size: 105%;
+}
+.ClearBottom, .Clear {
+    clear: both;
+    height: 0;
+}
+.ClearBreak {
+    clear: both;
+    padding-bottom: 1px;
+}
+.Clearleft {
+    clear: left;
+    height: 0;
+}
+.ClearRight {
+    clear: right;
+    height: 0;
+}
+.ClearRightBreak {
+    clear: right;
+    height: 16px;
+}
+.clearnone {
+    clear: none;
+}
+.Left {
+    float: left;
+}
+.Right {
+    float: right;
+}
+.Center {
+    text-align: center;
+}
+.no_wrap {
+    white-space: nowrap;
+}
+p {
+    margin: 0 0 12px;
+}
+.absolute {
+    position: absolute;
+}
+ol, ul {
+    line-height: 1.5;
+    margin: 12px 0 12px 12px;
+}
+ul > li, ol > ul > li {
+    /*background: url("/Areas/Sto/Content/Theming/Images/common.png") no-repeat scroll -405px -1px transparent;*/
+    list-style: none outside none;
+    padding: 0 0 3px 12px;
+}
+ol > li, ul > ol > li {
+    list-style-image: none;
+}
+li > ul, li > ol, ul > ul, ul > ol, ol > ul, ol > ol {
+    margin: 6px 0 6px 12px;
+}
+li > ul > li {
+    /*background: url("/Areas/Sto/Content/Theming/Images/common.png") no-repeat scroll -405px -1px transparent;*/
+}
+
+ol {
+    padding: 16px;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+.pre {
+    margin: 10px;
+    padding: 10px;
+}
+.code {
+    background: none repeat scroll 0 0 #DDDDDD;
+    display: block;
+    font-family: 'Lucida Console','Courier New';
+    font-size: 100%;
+    line-height: 1;
+    margin: 10px;
+    padding: 10px;
+}
+#BodyBackground {
+    padding: 0 483px;
+}
+#JelloSizer {
+    margin: 0 auto;
+    max-width: 0;
+    padding: 0;
+    width: 0;
+}
+#JelloExpander {
+    margin: 0 -483px;
+    min-width: 966px;
+    position: relative;
+}
+#JelloWrapper {
+    width: 100%;
+}
+
+.linklist h3 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+
+h1, .title {
+    margin: 5px 0;
+}
+h1, .title, h2, h3, h4, h5, h6 {
+    clear: both;
+    font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+}
+
+.alley {
+    background: url("/Areas/Sto/Content/Theming/msdn/images/contentpanemiddle.png") repeat-y scroll left center transparent;
+    padding-left: 19px;
+}
+.wrapper {
+    padding-right: 21px;
+}
+.inner {
+    min-height: 768px;
+    padding: 1px;
+}
+
+body {
+    color: #454545 !important;
+    font-family: 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 0.875em;
+    line-height: 1.429em;
+    padding: 0;
+}
+h1, h1.title {
+    color: #454545 !important;
+    font-family: 'Segoe UI Light','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 3em !important;
+    font-weight: normal !important;
+    line-height: 1.2em !important;
+    margin: 30px 0 0 -3px !important;
+    padding: 0 0 20px !important;
+    white-space: normal;
+}
+h1.api_ref {
+    font-size: 2em !important;
+    line-height: 1.357em !important;
+    margin-left: -2px !important;
+}
+h2 {
+    color: #454545 !important;
+    font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 1.45em !important;
+    line-height: 1.24em !important;
+    margin: 0 0 15px -1px !important;
+}
+h3 {
+    color: #454545 !important;
+    font-family: 'Segoe UI bold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 1em !important;
+    font-weight: bold !important;
+    line-height: 1.45em !important;
+    margin-bottom: 2px !important;
+    margin-left: -1px !important;
+}
+h2 > a, h2 > a:link, h2 > a:active, h2 > a:visited {
+    color: #1E75BB !important;
+}
+.contentTitle {
+    font: 3em/1.2 'Segoe UI Light','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    margin: 54px auto 0;
+    width: 998px;
+}
+h4, h5, h6 {
+    color: #2A2A2A;
+    font-family: 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    height: auto;
+    line-height: 130%;
+    margin: 0;
+}
+
+p {
+    color: #454545;
+    line-height: 1.429em !important;
+    margin: 0;
+    padding-bottom: 15px;
+}
+ol, ul {
+    list-style-position: inside;
+    margin: 5px 0 20px;
+    padding: 0 0 0 1px;
+}
+a, a:link, a:hover, a:active, a:visited {
+    font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 1em;
+    line-height: 1.429em;
+    text-decoration: none;
+}
+a, a:link {
+    color: #1E75BB;
+}
+a:hover {
+    color: #00BCF2;
+}
+a:active, a:visited {
+    color: #00188F;
+}
+#BodyBackground {
+    padding: 0;
+}
+#JelloSizer {
+    max-width: none;
+    width: 998px;
+}
+#JelloExpander {
+    margin: 0;
+}
+hr {
+    border-style: solid;
+    border-width: 1px;
+    color: #EDEDF0;
+}
+hr.horizontalRule {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.alley {
+    background: none repeat scroll 0 0 transparent;
+    margin-bottom: 5px;
+    padding-left: 0;
+}
+.wrapper {
+    padding-right: 0;
+}
+.inner {
+    min-height: 293px;
+    padding: 0;
+}
+.inner div > hr {
+    border-left: 0 none;
+}
+.innercol {
+    padding: 0 20px 0 0;
+}
+.LeftNavigation, .leftnavigation {
+    width: 190px;
+}
+.RightAdRail {
+    width: 210px;
+}
+.ColumnFifty, .columnfifty {
+    width: 313px;
+}
+.firstthird {
+    width: 243px;
+}
+.secondthird {
+    width: 243px;
+}
+.thirdthird {
+    width: 244px;
+}
+.fourcolumn {
+    float: left;
+    width: 222px;
+}
+.innercol .fourcolumn {
+    margin: 0 10px 0 0;
+}
+h2 a {
+    color: #1570A6 !important;
+    font-size: 0.95em;
+}
+.win8LinkList > p {
+    padding-bottom: 0;
+}
+.win8LinkList > p > a:link, .win8LinkList > p > a:active, .win8LinkList > p > a:visited {
+    color: #1E75BB !important;
+    font: 1em/28px 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+}
+.buttonBlue, .buttonGray, .buttonCyan {
+    min-width: 50px;
+}
+.buttonBlue a, .buttonGray a, .buttonCyan a {
+    color: #FFFFFF;
+    display: inline-block;
+    font: 1em/1 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    padding: 10px 18px;
+}
+.buttonCyan a {
+    color: #454545;
+}
+.buttonBlue a {
+    background-color: #1E75BB;
+}
+.buttonBlue a:hover {
+    background-color: #00BCF2;
+}
+.buttonBlue a:active {
+    background-color: #00188F;
+}
+.buttonGray a {
+    background-color: #454545;
+}
+.buttonGray a:hover {
+    background-color: #515151;
+}
+.buttonGray a:active {
+    background-color: #2A2A2A;
+}
+.buttonCyan a {
+    background-color: #00BCF2;
+}
+.buttonCyan a:hover {
+    background-color: #1E75BB;
+}
+.buttonCyan a:active {
+    background-color: #00188F;
+}
+
+.BreadCrumb {
+    color: #2A2A2A;
+    font-size: 10px;
+    line-height: 130%;
+    margin: 0 0 0 -2px;
+    padding: 0;
+}
+.BreadCrumb a {
+    color: #2A2A2A;
+    margin: 0 2px;
+}
+.BreadCrumb a:hover {
+    color: #707070;
+}
+.Clear {
+    clear: both;
+}
+#ux-header {
+    background-color: #454545;
+    color: #CFCFCF;
+    font-size: 12px;
+    line-height: 12px;
+    min-width: 998px;
+}
+#ux-header #headerContainer {
+    height: 105px;
+    margin: auto;
+    position: relative;
+    width: 998px;
+    z-index: 1000;
+}
+#ux-header li {
+    background-image: none;
+    list-style-type: none;
+}
+#ux-header a {
+    background-image: none;
+    color: #CFCFCF;
+}
+#ux-header a:hover {
+    color: #FFFFFF;
+}
+#ux-header .scarabLink {
+    float: right;
+    padding: 0;
+}
+#ux-header .createProfileLink {
+    float: right;
+    padding: 0 8px 0 0;
+}
+#ux-header #logo {
+    display: inline-block;
+    float: left;
+    height: 32px;
+}
+#ux-header #selectedTab {
+    float: left;
+    margin-top: -1px;
+}
+#ux-header #logoAndSearchBox {
+    padding: 30px 0 0;
+}
+#ux-header div.ux-internav {
+    display: inline-block;
+    font-size: 100%;
+    height: auto;
+    margin: 18px 0 0;
+    padding: 0;
+}
+#ux-header div#selectedTab a.dropDownToggle:after {
+    content: " ";
+    display: block;
+    float: right;
+    margin: 15px 0 0 12px;
+}
+#ux-header div#selectedTab a {
+    font-family: "Segoe UI","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+    font-size: 225%;
+    line-height: 1.09;
+    margin-left: 11px;
+    padding: 0;
+}
+#ux-header div#selectedTab a:hover {
+    color: #00CCFF;
+}
+#ux-header #toclevel1_menu {
+    font-size: 225%;
+    position: absolute;
+    z-index: 1001;
+}
+#ux-header #toclevel1_menu a {
+    font-family: "Segoe UI","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+}
+#ux-header #toclevel1_menu ul {
+    background-color: #282828;
+    line-height: 40px;
+    margin: 0;
+    min-width: 261px;
+    padding: 3px 13px 5px;
+}
+#ux-header #toclevel1_menu li {
+    margin-bottom: 5px;
+    padding: 0;
+}
+#ux-header a.active {
+    color: #00CCFF;
+}
+#ux-header div.toclevel2 {
+    float: left;
+    max-width: 741px;
+}
+#ux-header div.toclevel2 a, #ux-header div.toclevel3 a {
+    font-family: "Segoe UI Semibold","Segoe UI","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+    font-weight: 600;
+    padding: 0 9px;
+}
+#ux-header div.toclevel2 a:first-child, #ux-header div.toclevel3 a:first-child {
+    padding: 0 9px 0 0;
+}
+#ux-header div.toclevel2 a {
+    float: left;
+    height: auto;
+    letter-spacing: 1px;
+    margin: 1px 0;
+    text-transform: uppercase;
+}
+#ux-header div.toclevel3 {
+    margin: auto;
+    overflow: hidden;
+    padding: 9px 0 12px;
+    width: 998px;
+}
+#ux-header div.toclevel3 a {
+    left: 25px;
+    opacity: 0;
+    position: relative;
+}
+#ux-header #blackBar {
+    background-color: #282828;
+    min-height: 10px;
+}
+#ux-header.rtl .scarabLink, #ux-header.rtl div.SearchBox, #ux-header.rtl div.SearchBox button, #ux-header.rtl #signIn {
+    float: left;
+}
+#ux-header.rtl #logo, #ux-header.rtl #selectedTab {
+    float: right;
+}
+#ux-header.rtl div#selectedTab a {
+    margin: 0 11px 0 0;
+}
+#ux-header.rtl div#selectedTab a.dropDownToggle:after {
+    float: left;
+    margin: 15px 12px 0 0;
+}
+#ux-header.rtl div.toclevel3 a {
+    float: right;
+    left: -25px;
+}
+#ux-header.rtl div.toclevel2 a {
+    float: right;
+}
+#ux-header.rtl #toclevel1_menu ul {
+    padding: 3px 13px 5px 0;
+}
+#ux-footer {
+    background-color: #454545;
+    border-top: 10px solid #282828;
+    clear: both;
+    color: #FFFFFF;
+    font-family: 'Segoe UI Semibold','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    min-width: 998px;
+    padding: 0;
+}
+#ux-footer .clear {
+    clear: both;
+}
+#ux-footer #footerContainer, #ux-footer #footerSockInner {
+    margin: auto;
+    width: 998px;
+}
+#ux-footer #footerSock {
+    background-color: #282828;
+    /*display: none;*/
+}
+#ux-footer #footerSockInner {
+    padding: 42px 0 52px;
+}
+#ux-footer #footerSock #Fragment_Survey {
+    float: left;
+    margin-right: 30px;
+    width: 227px;
+}
+#ux-footer #footerSock div.rating {
+    float: left;
+    width: 484px;
+}
+#ux-footer #footerSock div.title {
+    color: #FFFFFF;
+    font-size: 1.667em;
+    margin-bottom: 8px;
+}
+#ux-footer #footerSock div.description, #ux-footer #footerSock #Fragment_Survey div.RichText {
+    color: #FFFFFF;
+    font: 1.2em/1.4 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    margin-bottom: 8px;
+}
+#ux-footer #footerSock div.buttons > button, #ux-footer #footerSock #Fragment_Survey div.link a {
+    background-color: #00BCF2;
+    border-style: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 1.2em/1 'Segoe UI Semibold','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    margin: 2px 5px 0 0;
+    padding: 10px 18px;
+}
+#ux-footer #footerSock #Fragment_Survey div.link a {
+    display: inline-block;
+}
+#ux-footer #footerSock div.buttons > button:hover, #ux-footer #footerSock #Fragment_Survey div.link a:hover {
+    background-color: #1E75BB;
+}
+#ux-footer #ratingSection2, #ux-footer #ratingSection3 {
+    display: none;
+}
+#ux-footer div.rating textarea {
+    border: 0 none;
+    font: 1.2em/1.4 'Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+    height: 120px;
+    margin-bottom: 10px;
+    padding: 15px 24px;
+    resize: none;
+    width: 436px;
+}
+#ux-footer #fourColumnFooter {
+    margin-top: 30px;
+    overflow: hidden;
+}
+#ux-footer a {
+    color: #FFFFFF;
+    line-height: 15px;
+}
+#ux-footer #Fragment_Column1, #ux-footer #Fragment_Column2, #ux-footer #Fragment_Column3, #ux-footer #Fragment_Column4 {
+    float: left;
+    margin: 0 0 0 30px;
+    width: 227px;
+}
+#ux-footer #Fragment_Column1 {
+    margin: 0;
+}
+#ux-footer #fourColumnFooter .LinkListTitle {
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+#ux-footer #fourColumnFooter #Fragment_Column1 .LinkListTitle {
+    line-height: 15px;
+    margin-bottom: 5px;
+}
+#ux-footer #fourColumnFooter li {
+    margin-bottom: 4px;
+}
+#ux-footer #fourColumnFooter #Fragment_Column1 li {
+    margin-bottom: 0;
+}
+#ux-footer #fourColumnFooter li a {
+    color: #BBBDBF;
+}
+#ux-footer #fourColumnFooter #Fragment_Column1 li a {
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 40px;
+}
+#ux-footer #fourColumnFooter div.LinkList {
+    margin: 37px 0 0;
+    padding: 0;
+}
+#ux-footer .microsoftlogo {
+    display: inline-block;
+    float: right;
+    margin-right: -4px;
+}
+#ux-footer .msdnlogo {
+    display: inline-block;
+    float: right;
+    margin-right: 44px;
+}
+#ux-footer #FooterCopyright {
+    float: right;
+    margin: 6px 0 0;
+}
+#ux-footer #Fragment_BaseFooter {
+    float: right;
+    margin: 6px 16px 0 0;
+    /*max-width: 520px;*/
+}
+#ux-footer #Fragment_BaseFooter a {
+    margin: 0 16px 0 0;
+}
+#ux-footer .selectLocale {
+    background-color: #282828;
+    float: left;
+    height: 24px;
+    margin-top: 3px;
+}
+#ux-footer .selectLocale a {
+    float: left;
+    line-height: 20px;
+    padding: 0 0 0 10px;
+}
+#ux-footer .selectLocale a:after {
+    background-color: #00CCFF;
+    content: " ";
+    display: block;
+    float: right;
+    margin-left: 10px;
+}
+#ux-footer .selectLocale a:hover:after {
+    background-color: #1E75BB;
+}
+#ux-footer #Fragment_HelloText {
+    display: inline-block;
+    float: left;
+    margin: 3px 16px 0 0;
+    padding: 3px 0 6px;
+}
+#ux-footer #baseFooterLogos {
+    margin-top: 122px;
+}
+#ux-footer #baseFooter {
+    clear: both;
+    padding-bottom: 13px;
+}
+#ux-footer #Fragment_SockLinks {
+    display: inline-block;
+    float: left;
+    margin-left: 30px;
+    width: 227px;
+}
+#ux-footer #Fragment_SockLinks li {
+    margin-bottom: 14px;
+}
+#ux-footer #Fragment_SockLinks a {
+    color: #00CCFF;
+    font-size: 1.667em;
+    line-height: 1.25em;
+}
+#ux-footer .LinkList ul {
+    padding: 0;
+}
+#ux-footer.rtl #footerSock #Fragment_Survey {
+    float: right;
+    margin-left: 30px;
+    margin-right: 0;
+}
+#ux-footer.rtl #footerSock div.rating {
+    float: right;
+}
+#ux-footer.rtl #Fragment_SockLinks {
+    float: right;
+    margin-left: 0;
+    margin-right: 30px;
+}
+#ux-footer.rtl #FooterCopyright {
+    float: left;
+}
+#ux-footer.rtl .microsoftlogo {
+    float: left;
+    margin-left: -1px;
+    margin-right: 0;
+}
+#ux-footer.rtl .msdnlogo {
+    float: left;
+    margin: 0 0 0 44px;
+}
+#ux-footer.rtl #Fragment_BaseFooter {
+    float: left;
+    margin: 6px 0 0 16px;
+}
+#ux-footer.rtl #Fragment_BaseFooter a {
+    margin: 0 0 0 16px;
+}
+#ux-footer.rtl #Fragment_Column1, #ux-footer.rtl #Fragment_Column2, #ux-footer.rtl #Fragment_Column3, #ux-footer.rtl #Fragment_Column4, #ux-footer.rtl .selectLocale {
+    float: right;
+}
+#ux-footer.rtl .selectLocale a {
+    padding: 0 10px 0 0;
+}
+#ux-footer.rtl .selectLocale a:after {
+    float: left;
+    margin: 0 10px 0 0;
+}
+#ux-footer.rtl #Fragment_HelloText {
+    float: right;
+    margin: 3px 0 0 16px;
+}
+#ux-footer.rtl ul.links {
+    float: right;
+    margin-left: 0;
+    margin-right: 30px;
+}
+
+.LinkList ul {
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.LinkList div.Links:last-child ul {
+    float: none;
+}
+.LinkList ul li {
+    background: none repeat scroll 0 0 transparent;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.LinkList ul.horizontal li {
+    float: left;
+}
+.rtl .LinkList ul.horizontal li {
+    float: right;
+}
+.LinkList .LinksDivider {
+    float: left;
+}

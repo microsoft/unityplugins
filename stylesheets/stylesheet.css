@@ -388,6 +388,13 @@ Small Device Styles
     max-width: 480px;
   }
 
+  .documentationinner {
+    min-width: 320px;
+    max-width: 1024px;
+	margin-left: 150px;
+	margin-right: 150px;
+  }
+  
   #project_title {
   font-size: 32px;
   }
