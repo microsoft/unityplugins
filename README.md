@@ -1,5 +1,5 @@
 # Unity plugins for Windows Platforms.
-The structure will be fairly simple. At the time, the intent is to have 5 Unity plugins:
+At the time, four of the plugins Store/Core/Azure and Advertising are in early preview:
 
 Documentation for Usage of the APIs is present at: http://microsoft.github.io/unityplugins
 
@@ -17,7 +17,7 @@ Contains CRUD operations for Azure Mobile Services
 ##Ads
 Contains Ad APIs for Microsoft Ads
 
-##Social (In progress)
+##Social (In progress, not in the build scripts)
 Mostly a wrapper for Facebook 
 
 
@@ -32,12 +32,11 @@ Mostly a wrapper for Facebook
 * Install Windows Azure SDK for Visual Studio 2015 from http://azure.microsoft.com/en-us/downloads/ 
 * Install the latest Microsoft Advertising SDK from http://adsinapps.microsoft.com/en-us/
 * Make sure you install the latest version of nuget  from http://blog.nuget.org/20150902/nuget-3.2RC.html (3.2+) and set its path in the $nuget_exe variable in the build.ps1 script
- * run build.ps1 script in the root folder. This will build all the plugins in the various flavors Debug/Release/architecture and place the binaries in the "Binaries" folder in the root of the project. It will additionally also copy the newly built DLLs to the Samples and run Unity to export the packages into the UnityPackages folder in the project root.
- * You DO NOT need to use the Cortana package. All Cortana functionality is present in the Core plugin and that is sufficient. Use the Cortana unity package as a learning sample.
- 
-* The build script (build.ps1) is set to stop on any failure. The last failure you see is the one that broke the build.
-* Finally, run "Windows Powershell"
-* Run the following in your powershell to allow build script. Answer 'Y' to the question on allowing 
+* You DO NOT need to use the Cortana package. All Cortana functionality is present in the Core plugin and that is sufficient. Use the Cortana unity package as a learning sample.
+
+* Finally, run "Windows Powershell" 
+* The build script (build.ps1) is a powershell script and is set to stop on any failure. The last failure you see is the one that broke the build.
+* Run the following in your powershell to allow build script to run. Answer 'Y' to the question on allowing 
    unsigned scripts to run.
 		'Set-ExecutionPolicy -Scope CurrentUser unrestricted'
 * run ".\build.ps1" with one of the options
@@ -47,5 +46,6 @@ Mostly a wrapper for Facebook
 	* -azure will build the azure plugin
 	* -all will build all the plugins
 	* -help will print the help message
- 
+	
+* Successful completion of the build.ps1 script will build all the plugins in the various flavors Debug/Release/architecture and place the binaries in the "Binaries" folder in the root of the project. It will additionally also copy the newly built DLLs to the Samples and run Unity to export the packages into the UnityPackages folder in the project root.	
  
