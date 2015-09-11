@@ -10,6 +10,7 @@ title: Advertising Plugin
 
 ```C#
 Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
+```
 
 ##APIs
 
