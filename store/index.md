@@ -7,11 +7,23 @@ title: Store Plugin
 Store Plugin (Microsoft.UnityPlugins.Store.unitypackage) contains APIs to easily integrate Windows Store related functionality into Unity based Windows Store apps.
 
 ##APIs
-> Windows Store APIs can be invoked in two modes: Simulator Mode and against the real Windows Store. To invoke the APIs in Simulator mode, you need to place an XML file containing data that the license simulator will use. Example of such a file is present [here](https://github.com/Microsoft/unityplugins/blob/master/Samples/StoreTest/out_win10/StoreTest/WindowsStoreProxy.xml). To test an app against the real Windows Store, the app must be onboarded to the Windows Store. You may use the Hidden mode of the Windows Store in case you want to create a test app that you do not intend to release but only want to test against. Once an app has been published, you need to do the following:
->
+ Windows Store APIs can be invoked in two modes: Simulator Mode and against the real Windows Store. To invoke the APIs in Simulator mode, you need to place an XML file containing data that the license simulator will use. Example of such a file is present [here](https://github.com/Microsoft/unityplugins/blob/master/Samples/StoreTest/out_win10/StoreTest/WindowsStoreProxy.xml). You can place the file in the root folder of your app i.e. where the csproj file lives and call it *WindowsStoreProxy.xml*. If you want to name it differently or place it at a different path, you will need to pass the to path to the LoadLicenseXMLFile function. To test an app against the real Windows Store, the app must be onboarded to the Windows Store. You may use the Hidden mode of the Windows Store in case you want to create a test app that you do not intend to release but only want to test against. Once an app has been published, you need to do the following:
+
 > * Download the app from the store onto your device
 > * Using Visual Studio options (Store->Associate app with store), associate the app with the store. This brings in the right metadata from store into your app.
 > * Deploy your app on top of the app obtained from the store. At this point, you should be able to test the APIs against the real Windows Store. Make note that if you have paid In-App purchases, they will charge you real money.
+
+To use License Simulator functionality, you MUST first call the *LoadLicenseXMLFile* function before calling any other store function. Invoking this function puts the store plugin in simulator mode. If you do not call this function, the plugin will invoke APIs that call the real Windows Store licensing service.
+
+Finally: 
+
+>Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. This is required so that Windows APIs that require the Windows UI thread can run on it and then call any callbacks back on the Unity thread.
+>
+>You should place the following line just after *Window.Current.Activate()* in *InitializeUnity* function in App.xaml.cs in the exported Windows Universal project.
+
+```C#
+Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
+```
 
 ### Enumerations
 ```C#
@@ -161,4 +173,4 @@ public static void LoadLicenseXMLFile(Action<CallbackResponse> callback,
 ```
 
 ## Sample
-A sample is included in the github repository under Samples/StoreTest folder.
+A sample is included in the [github repository](https://github.com/Microsoft/unityplugins) under Samples/StoreTest folder. A Windows Store exported project with the appropriate settings is present in the *Samples/StoreTest/out_win10* folder.
