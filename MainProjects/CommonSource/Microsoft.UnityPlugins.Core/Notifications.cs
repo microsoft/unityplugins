@@ -12,7 +12,7 @@ namespace Microsoft.UnityPlugins
         /// Get push notification channel for the application
         /// </summary>
         /// <param name="OnPushNotificationChannelCreated"></param>
-        public static void CreatePushNotificationChannelForApplication(Action<PushNotificationChannel, Exception> OnPushNotificationChannelCreated)
+        public static void CreatePushNotificationChannelForApplication(Action<CallbackResponse<PushNotificationChannel>> OnPushNotificationChannelCreated)
         {
             Utils.RunOnWindowsUIThread(async () =>
             {
@@ -23,7 +23,7 @@ namespace Microsoft.UnityPlugins
                     {
                         Utils.RunOnUnityAppThread(() =>
                         {
-                            OnPushNotificationChannelCreated(new PushNotificationChannel(channel), null);
+                            OnPushNotificationChannelCreated(new CallbackResponse<PushNotificationChannel> { Result = new PushNotificationChannel(channel), Status = CallbackStatus.Success, Exception = null});
                         });
                     }
                 }
@@ -31,9 +31,11 @@ namespace Microsoft.UnityPlugins
                 {
                     Utils.RunOnUnityAppThread(() =>
                     {
-                       // If we caught an exception, send it back to the caller
-                       OnPushNotificationChannelCreated(null, ex);
+                        // If we caught an exception, send it back to the caller
+                        OnPushNotificationChannelCreated(new CallbackResponse<PushNotificationChannel> { Result = null, Status = CallbackStatus.Failure, Exception = ex});
                     });
+
+                    return;
                 }
             });
         }
@@ -43,7 +45,7 @@ namespace Microsoft.UnityPlugins
         /// </summary>
         /// <param name="tileId"></param>
         /// <param name="OnPushNotificationChannelForSecondaryTileCreated"></param>
-        public static void CreatePushNotificationChannelForSecondaryTile(string tileId, Action<PushNotificationChannel, Exception> OnPushNotificationChannelForSecondaryTileCreated)
+        public static void CreatePushNotificationChannelForSecondaryTile(string tileId, Action<CallbackResponse<PushNotificationChannel>> OnPushNotificationChannelForSecondaryTileCreated)
         {
             Utils.RunOnWindowsUIThread(async () =>
             {
@@ -54,7 +56,7 @@ namespace Microsoft.UnityPlugins
                     {
                         Utils.RunOnUnityAppThread(() =>
                         {
-                            OnPushNotificationChannelForSecondaryTileCreated(new PushNotificationChannel(channel), null);
+                            OnPushNotificationChannelForSecondaryTileCreated(new CallbackResponse<PushNotificationChannel> { Result = new PushNotificationChannel(channel), Status = CallbackStatus.Success, Exception = null});
                         });
                     }
                 }
@@ -63,8 +65,10 @@ namespace Microsoft.UnityPlugins
                     Utils.RunOnUnityAppThread(() =>
                     {
                         // If we caught an exception, send it back to the caller
-                        OnPushNotificationChannelForSecondaryTileCreated(null, ex);
+                        OnPushNotificationChannelForSecondaryTileCreated(new CallbackResponse<PushNotificationChannel> { Result = null, Status = CallbackStatus.Failure, Exception = ex });
                     });
+
+                    return;
                 }
             });
         }
@@ -74,7 +78,7 @@ namespace Microsoft.UnityPlugins
         /// </summary>
         /// <param name="OnPushNotification"></param>
         /// <param name="cancelDefaultBehavior"></param>
-        public static void RegisterForNotifications(Action<object> OnPushNotification, bool cancelDefaultBehavior)
+        public static void RegisterForNotifications(Action<CallbackResponse<object>> OnPushNotification, bool cancelDefaultBehavior)
         {
             Utils.RunOnWindowsUIThread(async () =>
             {
@@ -111,14 +115,18 @@ namespace Microsoft.UnityPlugins
 
                         Utils.RunOnUnityAppThread(() =>
                         {
-                            OnPushNotification(notificationContent);
+                            if(OnPushNotification != null)
+                                OnPushNotification(new CallbackResponse<object> { Result = notificationContent, Status = CallbackStatus.Success, Exception = null});
                         });
-                        
                     };
                 }
                 catch (Exception ex)
                 {
                     DebugLog.Log(LogLevel.Error, "Error registering for notifications");
+                    if (OnPushNotification != null)
+                        OnPushNotification(new CallbackResponse<object> { Result = null, Status = CallbackStatus.Failure, Exception = ex});
+
+                    return;
                 }
             });
         }

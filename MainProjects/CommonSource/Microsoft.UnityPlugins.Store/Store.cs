@@ -30,7 +30,6 @@ namespace Microsoft.UnityPlugins
         private static Action _onLicenseChanged;
 
         /// <summary>
-        /// TODO: (sanjeevd) This function should be called from app.xaml.cs so it is always registered
         /// </summary>
         public static void RegisterForLicenseChangeEvents(Action OnLicenseChangedHandler)
         {

@@ -132,9 +132,6 @@
     <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\RoamingSettings.cs">
       <Link>RoamingSettings.cs</Link>
     </Compile>
-    <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\SettingsPane.cs">
-      <Link>SettingsPane.cs</Link>
-    </Compile>
     <Compile Include="..\..\CommonSource\Microsoft.UnityPlugins.Core\TextUtils.cs">
       <Link>TextUtils.cs</Link>
     </Compile>
@@ -179,8 +176,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="SpicNSpan"
-        AfterTargets="Clean">
-    <RemoveDir Directories="$(OUTDIR)"/>
+  <Target Name="SpicNSpan" AfterTargets="Clean">
+    <RemoveDir Directories="$(OUTDIR)" />
   </Target>
 </Project>

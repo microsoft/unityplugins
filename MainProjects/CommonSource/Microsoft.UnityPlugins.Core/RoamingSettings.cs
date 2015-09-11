@@ -45,19 +45,31 @@ namespace Microsoft.UnityPlugins
             }
         }
         public static string[] AllKeys { get; }
-        public static void ClearAllApplicationData(Action OnClearAppDataFinished)
+        public static void ClearAllApplicationData(Action<CallbackResponse> OnClearAppDataFinished)
         {
-            // TODO: (sanjeevd) This is hitting a FileLoadException... investigation needed
+            // TODO: This is hitting a FileLoadException... investigation needed
           Utils.RunOnWindowsUIThread(async () =>
            {
-              await Windows.Storage.ApplicationData.Current.ClearAsync();
+               try
+               {
+                   await Windows.Storage.ApplicationData.Current.ClearAsync();
 
-               if(OnClearAppDataFinished != null)
+                   if (OnClearAppDataFinished != null)
+                   {
+                       Utils.RunOnUnityAppThread(() =>
+                       {
+                           OnClearAppDataFinished(new CallbackResponse { Status = CallbackStatus.Success, Exception = null });
+                       });
+                   }
+               }
+               catch(Exception ex)
                {
                    Utils.RunOnUnityAppThread(() =>
-                  {
-                      OnClearAppDataFinished();
-                  });
+                   {
+                       OnClearAppDataFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = ex });
+                   });
+
+                   return;
                }
            });
         }
