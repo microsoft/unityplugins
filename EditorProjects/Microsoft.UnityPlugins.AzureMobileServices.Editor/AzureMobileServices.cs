@@ -8,12 +8,12 @@ namespace Microsoft.UnityPlugins
 {
     public class AzureMobileServices
     {
-        public static void AuthenticateWithServiceProvider(MobileServiceAuthenticationProvider authenticationProvider, 
-            Action<MobileServiceUser> OnAuthenticationFinished)
+        public static void AuthenticateWithServiceProvider(MobileServiceAuthenticationProvider authenticationProvider,
+            Action<CallbackResponse<MobileServiceUser>> OnAuthenticationFinished)
         {
             if(OnAuthenticationFinished != null)
             {
-                OnAuthenticationFinished(new MobileServiceUser());
+                OnAuthenticationFinished(new CallbackResponse<MobileServiceUser> { Result = null, Status = CallbackStatus.Failure, Exception = new Exception("Cannot invoke Windows Store API in the Editor") });
             }
         }
 
@@ -21,45 +21,46 @@ namespace Microsoft.UnityPlugins
         {
         }
 
-        public static void Insert<T>(T item, Action OnInsertFinished)
+        public static void Insert<T>(T item, Action<CallbackResponse> OnInsertFinished)
         {
             if(OnInsertFinished != null)
             {
-                OnInsertFinished();
+                OnInsertFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = new Exception("Cannot invoke Windows Store API in the Editor") });
             }
         }
 
-        public static void Lookup<T>(string id, Action<T> OnLookupFinished)
+        public static void Lookup<T>(String id, Action<CallbackResponse<T>> OnLookupFinished)
         {
             if (OnLookupFinished != null)
             {
-                OnLookupFinished(default(T));
+                OnLookupFinished(new CallbackResponse<T> { Result = default(T), Status = CallbackStatus.Success, Exception = new Exception("Cannot invoke Windows Store API in the Editor") });
             }
         }
 
 
-        public static void Update<T>(T item, Action OnUpdateFinished)
+        public static void Update<T>(T item, Action<CallbackResponse> OnUpdateFinished)
         {
             if (OnUpdateFinished != null)
             {
-                OnUpdateFinished();
+                
+                OnUpdateFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = new Exception("Cannot invoke Windows Store API in the Editor") });
             }
         }
 
 
-        public static void Delete<T>(T item, Action OnDeleteFinished)
+        public static void Delete<T>(T item, Action<CallbackResponse> OnDeleteFinished)
         {
             if (OnDeleteFinished != null)
             {
-                OnDeleteFinished();
+                OnDeleteFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = new Exception("Cannot invoke Windows Store API in the Editor") });
             }
         }
 
-        public static void Where<T>(Expression<Func<T, bool>> predicate, Action<List<T>> OnWhereFinished)
+        public static void Where<T>(Expression<Func<T, bool>> predicate, Action<CallbackResponse<List<T>>> OnWhereFinished)
         {
             if (OnWhereFinished != null)
             {
-                OnWhereFinished(new List<T>());
+                OnWhereFinished(new CallbackResponse<List<T>> { Result = null, Status = CallbackStatus.Failure, Exception = new Exception("Cannot invoke Windows Store API in the Editor") });
             }
         }
     }
