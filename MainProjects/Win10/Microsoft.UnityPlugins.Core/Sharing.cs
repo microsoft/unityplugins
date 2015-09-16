@@ -149,11 +149,14 @@ namespace Microsoft.UnityPlugins
                 }
                 catch(Exception ex)
                 {
-                    if(OnShareCompleted != null)
+                    Utils.RunOnUnityAppThread(() =>
                     {
-                        OnShareCompleted(new CallbackResponse { Exception = ex, Status = CallbackStatus.Failure});
-                        return;
-                    }
+                        if (OnShareCompleted != null)
+                        {
+                            OnShareCompleted(new CallbackResponse { Exception = ex, Status = CallbackStatus.Failure });
+                            return;
+                        }
+                    });
                 }
             });
         }

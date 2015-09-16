@@ -131,7 +131,6 @@ if($store -or $all)
 	WriteMessage "==========================================" "magenta"
 
 	$currentPath = convert-path .
-	WriteMessage "Exporting Azure Mobile Services package" "magenta"
 
 	WriteMessage "Exporting Store package" "magenta"
 	& $unity_exe  -batchmode -projectPath $currentPath\Samples\StoreTest -exportPackage Assets  $currentPath\UnityPackages\Microsoft.UnityPlugins.Store.unityPackage -quit | Out-Null
