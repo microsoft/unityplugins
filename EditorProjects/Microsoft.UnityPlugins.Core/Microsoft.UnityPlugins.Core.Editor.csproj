@@ -7,7 +7,7 @@
     <ProjectGuid>{2942DC17-84A4-4B2C-8B6A-5E5BC0CE563E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.UnityPlugins.Core</RootNamespace>
+    <RootNamespace>Microsoft.UnityPlugins</RootNamespace>
     <AssemblyName>Microsoft.UnityPlugins.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,6 +42,7 @@
       <Link>ToastTemplateType.cs</Link>
     </Compile>
     <Compile Include="RoamingSettings.cs" />
+    <Compile Include="Sharing.cs" />
     <Compile Include="Speech.cs" />
     <Compile Include="SpeechArguments.cs" />
     <Compile Include="Notifications.cs" />
@@ -52,6 +53,12 @@
     <Compile Include="Tiles.cs" />
     <Compile Include="TileTemplateType.cs" />
     <Compile Include="Toasts.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.UnityPlugins.Common\Microsoft.UnityPlugins.Common.Editor.csproj">
+      <Project>{c581f1a7-227a-4eea-a378-9af36e2f609e}</Project>
+      <Name>Microsoft.UnityPlugins.Common.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

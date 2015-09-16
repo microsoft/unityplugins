@@ -74,6 +74,7 @@ function exitIfFailed($message)
 
 
 
+
 # IMPORTANT: MAKE SURE TO SET THESE VARIABLES TO YOUR ENVIRONMENT TO AVOID
 # BUILD FAILURES
 $msbuild_vs = "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe"
@@ -81,6 +82,14 @@ $unity_exe = "C:\Program Files\Unity\Editor\unity.exe"
 $nuget_exe = "c:\tools\nuget.exe"
 
 
+WriteMessage "Build Editor Projects" "magenta"
+
+& $msbuild_vs  EditorProjects\Microsoft.UnityPlugins.sln /p:Configuration=Release
+exitIfFailed 'Editor projects - AnyCPU, RELEASE'
+
+& $msbuild_vs  EditorProjects\Microsoft.UnityPlugins.sln /p:Configuration=Debug
+exitIfFailed 'Editor projects - AnyCPU, Debug'
+WriteMessage "Finished Building Editor Projects" "green"
 
 if($store -or $all)
 {
@@ -170,7 +179,6 @@ if($core -or $all)
 	WriteMessage "==========================================" "magenta"
 
 	$currentPath = convert-path .
-	WriteMessage "Exporting Azure Mobile Services package" "magenta"
 
 	WriteMessage "Exporting Core package" "magenta"
 	& $unity_exe  -batchmode -projectPath $currentPath\Samples\CoreTest -exportPackage Assets  $currentPath\UnityPackages\Microsoft.UnityPlugins.Core.unityPackage -quit  | Out-Null
