@@ -23,7 +23,7 @@ namespace Microsoft.UnityPlugins
         {
             if(OnDataChanged != null)
             {
-                // TODO: (sanjeevd) This callback should be passed some context.. otherwise the user will have no idea
+                // TODO: This callback should be passed some context.. otherwise the user will have no idea
                 // on what changed and what to do.
                 OnDataChanged();
             }

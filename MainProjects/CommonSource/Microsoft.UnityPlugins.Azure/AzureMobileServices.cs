@@ -9,11 +9,6 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.UnityPlugins
 {
-    // Note: (sanjeevd) Azure Mobile Services PCL nuget does not have the LoginAsync with just 1 paramater which is used to
-    // perform the authentication client side. So, I hacked it by removing the "Windows Phone 8.1" support, removed the reference,
-    // reinstalled the nuget and then finally added the Windows Phone 8.1 target again. VS complained and mentioned that I should redo
-    // the nuget intall but I ignored it. I am only planning for the plugin to be present only on Windows 8.1 .NET CORE and
-    // Windows Phone 8.1 .NET CORE so I believe this should be fine.
     public class AzureMobileServices
     {
         
@@ -21,23 +16,37 @@ namespace Microsoft.UnityPlugins
         private static Microsoft.WindowsAzure.MobileServices.MobileServiceUser user = null;
 
         public static void AuthenticateWithServiceProvider(MobileServiceAuthenticationProvider authenticationProvider, 
-            Action<MobileServiceUser> OnAuthenticationFinished)
+            Action<CallbackResponse<MobileServiceUser>> OnAuthenticationFinished)
         {
             Task.Run(() =>
             {
                 Utils.RunOnWindowsUIThread(async () =>
                 {
-                    user = await
-                        mobileServiceClient.LoginAsync(
-                            Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.Facebook);
+                    try
+                    {
+                        user = await
+                            mobileServiceClient.LoginAsync(
+                                Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.Facebook);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (OnAuthenticationFinished != null)
+                        {
+                            Utils.RunOnUnityAppThread(() =>
+                            {
+
+                                OnAuthenticationFinished(new CallbackResponse<MobileServiceUser> { Result = null, Status = CallbackStatus.Failure, Exception = ex });
+
+                            });
+                        }
+                        return;
+                    }
 
                     if (OnAuthenticationFinished != null)
                     {
-                        Utils.RunOnUnityAppThread(
-                        () =>
+                        Utils.RunOnUnityAppThread(() =>
                         {
-                            OnAuthenticationFinished(new Microsoft.UnityPlugins.MobileServiceUser(user));
-
+                            OnAuthenticationFinished(new CallbackResponse<MobileServiceUser> { Result = new Microsoft.UnityPlugins.MobileServiceUser(user), Status = CallbackStatus.Success, Exception = null });
                         });
                     }
                 });
@@ -59,92 +68,147 @@ namespace Microsoft.UnityPlugins
             }
         }
 
-        public static void Insert<T>(T item, Action OnInsertFinished)
+        public static void Insert<T>(T item, Action<CallbackResponse> OnInsertFinished)
         {
             Task.Run(() =>
             {
                 Utils.RunOnWindowsUIThread(async () =>
                 {
-                    await mobileServiceClient.GetTable<T>().InsertAsync(item);
+                    try
+                    {
+                        await mobileServiceClient.GetTable<T>().InsertAsync(item);
+                    }
+                    catch(Exception ex)
+                    {
+                        if (OnInsertFinished != null)
+                        {
+                            Utils.RunOnUnityAppThread(() =>
+                            {
+
+                                OnInsertFinished(new CallbackResponse {Status = CallbackStatus.Failure, Exception = ex });
+
+                            });
+                        }
+                        return;
+                    }
 
                     if (OnInsertFinished != null)
                     {
                         Utils.RunOnUnityAppThread(() =>
                         {
-                            OnInsertFinished();
-                        }
-                        );
+                            OnInsertFinished(new CallbackResponse { Status = CallbackStatus.Success, Exception = null});
+                        });
                     }
                 });
             });
         }
 
-        public static void Lookup<T>(String id, Action<T> OnLookupFinished)
+        public static void Lookup<T>(String id, Action<CallbackResponse<T>> OnLookupFinished)
         {
             Task.Run(async () =>
             {
-                T itemFound = await mobileServiceClient.GetTable<T>().LookupAsync(id);
-
-                if (itemFound != null)
+                try
+                {
+                    T itemFound = await mobileServiceClient.GetTable<T>().LookupAsync(id);
+                    if (itemFound != null)
+                    {
+                        if (OnLookupFinished != null)
+                        {
+                            Utils.RunOnUnityAppThread(() =>
+                            {
+                                OnLookupFinished(new CallbackResponse<T> {Result = itemFound, Status = CallbackStatus.Success, Exception = null });
+                            });
+                        }
+                    }
+                }
+                catch(Exception ex)
                 {
                     if (OnLookupFinished != null)
                     {
                         Utils.RunOnUnityAppThread(() =>
                         {
-                            OnLookupFinished(itemFound);
+                            OnLookupFinished(new CallbackResponse<T> {Result = default(T), Status = CallbackStatus.Failure, Exception = ex });
                         });
                     }
+                    return;
                 }
             });
         }
 
 
-        public static void Update<T>(T item, Action OnUpdateFinished)
+        public static void Update<T>(T item, Action<CallbackResponse> OnUpdateFinished)
         {
             Task.Run(async () =>
             {
-                await mobileServiceClient.GetTable<T>().UpdateAsync(item);
+                try
+                {
+                    await mobileServiceClient.GetTable<T>().UpdateAsync(item);
+
+                }
+                catch(Exception ex)
+                {
+                    OnUpdateFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = ex });
+                    return;
+                }
 
                 if (OnUpdateFinished != null)
                 {
-                   Utils.RunOnUnityAppThread(() =>
-                   {
-                       OnUpdateFinished();
-                   });
+                    Utils.RunOnUnityAppThread(() =>
+                    {
+                        OnUpdateFinished(new CallbackResponse { Status = CallbackStatus.Success, Exception = null});
+                    });
                 }
+
             });
         }
 
 
-        public static void Delete<T>(T item, Action OnDeleteFinished)
+        public static void Delete<T>(T item, Action<CallbackResponse> OnDeleteFinished)
         {
             Task.Run(async () =>
             {
-                await mobileServiceClient.GetTable<T>().DeleteAsync(item);
+                try
+                {
+                    await mobileServiceClient.GetTable<T>().DeleteAsync(item);
+                }
+                catch(Exception ex)
+                {
+                    OnDeleteFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = ex });
+                }
 
                 if (OnDeleteFinished != null)
                 {
                     Utils.RunOnUnityAppThread(() =>
                     {
-                        OnDeleteFinished();
+                        OnDeleteFinished(new CallbackResponse { Status = CallbackStatus.Success, Exception = null });
                     });
                 }
             });
         }
 
-        public static void Where<T>(Expression<Func<T, bool>> predicate, Action<List<T>> OnWhereFinished)
+        public static void Where<T>(Expression<Func<T, bool>> predicate, Action<CallbackResponse<List<T>>> OnWhereFinished)
         {
             Task.Run(async () =>
             {
-                var query = mobileServiceClient.GetTable<T>().Where(predicate);
-                var queryResult = await query.ToListAsync();
-
-                if (OnWhereFinished != null)
+                try
                 {
-                    Utils.RunOnUnityAppThread(() =>
-                   {
-                       OnWhereFinished(queryResult);
-                   });
+                    var query = mobileServiceClient.GetTable<T>().Where(predicate);
+                    var queryResult = await query.ToListAsync();
+
+                    if (OnWhereFinished != null)
+                    {
+                        Utils.RunOnUnityAppThread(() =>
+                       {
+                           OnWhereFinished(new CallbackResponse<List<T>> { Result = queryResult,  Status = CallbackStatus.Success, Exception = null});
+                       });
+                    }
+                }
+                catch(Exception ex)
+                {
+                    if (OnWhereFinished != null)
+                    {
+                        OnWhereFinished(new CallbackResponse<List<T>> { Result = null, Status = CallbackStatus.Failure, Exception = ex });
+                    }
                 }
             });
         }

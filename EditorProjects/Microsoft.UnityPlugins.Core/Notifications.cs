@@ -11,11 +11,11 @@ namespace Microsoft.UnityPlugins
         /// Get push notification channel for the application
         /// </summary>
         /// <param name="OnPushNotificationChannelCreated"></param>
-        public static void CreatePushNotificationChannelForApplication(Action<PushNotificationChannel, Exception> OnPushNotificationChannelCreated)
+        public static void CreatePushNotificationChannelForApplication(Action<CallbackResponse<PushNotificationChannel>> OnPushNotificationChannelCreated)
         {
             if(OnPushNotificationChannelCreated != null)
             {
-                OnPushNotificationChannelCreated(null, null);
+                OnPushNotificationChannelCreated(new CallbackResponse<PushNotificationChannel> { Result = null, Status = CallbackStatus.Failure, Exception = new Exception("Windows Store APIs cannot be called in the editor") });
             }
         }
 
@@ -24,11 +24,11 @@ namespace Microsoft.UnityPlugins
         /// </summary>
         /// <param name="tileId"></param>
         /// <param name="OnPushNotificationChannelForSecondaryTileCreated"></param>
-        public static void CreatePushNotificationChannelForSecondaryTile(string tileId, Action<PushNotificationChannel, Exception> OnPushNotificationChannelForSecondaryTileCreated)
+        public static void CreatePushNotificationChannelForSecondaryTile(string tileId, Action<CallbackResponse<PushNotificationChannel>> OnPushNotificationChannelForSecondaryTileCreated)
         {
             if (OnPushNotificationChannelForSecondaryTileCreated != null)
             {
-                OnPushNotificationChannelForSecondaryTileCreated(null, null);
+                OnPushNotificationChannelForSecondaryTileCreated(new CallbackResponse<PushNotificationChannel> { Result = null, Status = CallbackStatus.Failure, Exception = new Exception("Windows Store APIs cannot be called in the editor") });
             }
         }
 
@@ -37,11 +37,11 @@ namespace Microsoft.UnityPlugins
         /// </summary>
         /// <param name="OnPushNotification"></param>
         /// <param name="cancelDefaultBehavior"></param>
-        public static void RegisterForNotifications(Action<object> OnPushNotification, bool cancelDefaultBehavior)
+        public static void RegisterForNotifications(Action<CallbackResponse<object>> OnPushNotification, bool cancelDefaultBehavior)
         {
             if(OnPushNotification != null)
             {
-                OnPushNotification(null);
+                OnPushNotification(new CallbackResponse<object> { Result = null, Status = CallbackStatus.Failure, Exception = new Exception("Windows Store APIs cannot be called in the editor") });
             }
         }
     }

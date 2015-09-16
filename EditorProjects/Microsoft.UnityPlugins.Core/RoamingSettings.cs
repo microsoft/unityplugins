@@ -24,8 +24,12 @@ namespace Microsoft.UnityPlugins
             }
         }
         public static string[] AllKeys { get; }
-        public static void ClearAllApplicationData(Action OnClearAppDataFinished)
+        public static void ClearAllApplicationData(Action<CallbackResponse> OnClearAppDataFinished)
         {
+            if(OnClearAppDataFinished != null)
+            {
+                OnClearAppDataFinished(new CallbackResponse { Status = CallbackStatus.Failure, Exception = new Exception("Cannot call Windows Store API in the Unity Editor") });
+            }
         }
 
 
