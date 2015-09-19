@@ -1,5 +1,4 @@
 Assembly-CSharp.dll
-UnityEngine.Analytics.dll
 UnityEngine.UI.dll
 Microsoft.UnityPlugins.Common.dll
 Microsoft.UnityPlugins.Core.dll
