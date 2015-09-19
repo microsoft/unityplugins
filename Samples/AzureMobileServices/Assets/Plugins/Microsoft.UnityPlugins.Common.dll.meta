@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0128371e60cf9d7449a72d143389e511
-timeCreated: 1438640249
+guid: a5a30eda0cf982f42bc7ba5bc9ba45b5
+timeCreated: 1442623850
 licenseType: Pro
 PluginImporter:
   serializedVersion: 1
@@ -16,7 +16,7 @@ PluginImporter:
       enabled: 0
       settings: {}
     Editor:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
@@ -56,11 +56,11 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     WindowsStoreApps:
-      enabled: 1
+      enabled: 0
       settings:
         CPU: AnyCPU
-        DontProcess: True
-        PlaceholderPath: Assets/Plugins/Microsoft.UnityPlugins.Common.dll
+        DontProcess: False
+        PlaceholderPath: 
         SDK: AnySDK
     iOS:
       enabled: 0

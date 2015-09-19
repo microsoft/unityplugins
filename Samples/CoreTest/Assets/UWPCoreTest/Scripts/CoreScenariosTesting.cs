@@ -12,10 +12,16 @@ public class CoreScenariosTesting : MonoBehaviour {
     {
         text.text = "Live tile button was pressed";
 
-        // TESTED - Works
-        //Tiles.UpdateTile(TileTemplateType.TileSquareText01, new string[] {"MyTile", "tile1", "tile2", "tile3" });
+        // IMPORTANT: Note that for the updatetile function to actually work, you must use the right number
+        // of strings/images that the template requires. If the number of strings/images don't match the template 
+        // exactly, the updateTile function is going to ignore the call silently without throwing an error
 
-        Tiles.UpdateTile(TileTemplateType.TileSquareImage, null, new string[] { "Assets/150x150.png"});
+        // TESTED - Works - Simple 4 line - text Live Tile
+        Tiles.UpdateTile(TileTemplateType.TileSquareText01, new string[] {"MyTile", "tile1", "tile2", "tile3" });
+
+
+        // a tile with an image
+        //Tiles.UpdateTile(TileTemplateType.TileSquareImage, null, new string[] { "Assets/150x150.png"});
 
         Debug.Log("LiveTilesUpdated");
     }
@@ -139,7 +145,7 @@ public class CoreScenariosTesting : MonoBehaviour {
         RoamingSettings.DeleteContainer("roaming_container2");
         Debug.Log("deleting container container2");
 
-        RoamingSettings.ClearAllApplicationData(() =>
+        RoamingSettings.ClearAllApplicationData((response) =>
         {
             Debug.Log("All application data cleared");
         });
@@ -150,25 +156,30 @@ public class CoreScenariosTesting : MonoBehaviour {
 
     public void TestPushStuff()
     {
-        Notifications.CreatePushNotificationChannelForApplication((ch, ex) =>
+        Notifications.CreatePushNotificationChannelForApplication((response) =>
         {
-            Debug.Log("Push channel URL: " + ch.Uri.ToString());
+            if(response.Status == CallbackStatus.Failure)
+            {
+                Debug.LogError("Push notification channel creation failed: " + response.Exception.Message);
+                return;
+            }
+
+            Debug.Log("Push channel URL: " + response.Result.Uri.ToString());
         });
 
-        //Notifications.CreatePushNotificationChannelForSecondaryTile("1", (ch, ex) =>
-        //{
-        //    Debug.Log("Push channel URL: " + ch.Uri.ToString());
-        //});
-
-        Notifications.RegisterForNotifications((content) =>
+        Notifications.RegisterForNotifications((response) =>
         {
-            if(content != null)
+            if(response.Status == CallbackStatus.Failure)
             {
-                Debug.Log("Notification content: " + content.ToString());
+                Debug.LogError("Push notification channel creation failed: " + response.Exception.Message);
+                return;
             }
+
+            Debug.Log("Notification content: " + response.Result.ToString());
+            Debug.Log("Push notifications tested");
+            text.text = "Push notification test successful";
         }, true);
 
-        Debug.Log("SUCCESS: Push notifications tested");
-        text.text = "Push notification test successful";
+
     }
 }

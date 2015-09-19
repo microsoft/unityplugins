@@ -309,7 +309,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 8075360b57e9d101
+  metroCertificateNotAfter: 80ac1da1f211d201
   metroApplicationDescription: AzureMobileServices
   metroStoreTileLogo80: 
   metroStoreTileLogo: 

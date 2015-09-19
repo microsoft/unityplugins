@@ -16,8 +16,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CoreTest.App">
       <uap:VisualElements DisplayName="CoreTest" Square150x150Logo="Assets\MediumTile.png" Square44x44Logo="Assets\SmallLogo.png" Description="CoreTest" BackgroundColor="#000000">
-        <uap:DefaultTile Wide310x150Logo="Assets\WideTile.png">
-        </uap:DefaultTile>
+        <uap:DefaultTile Wide310x150Logo="Assets\WideTile.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>

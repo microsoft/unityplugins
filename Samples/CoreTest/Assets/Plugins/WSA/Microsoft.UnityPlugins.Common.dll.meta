@@ -60,7 +60,7 @@ PluginImporter:
       settings:
         CPU: AnyCPU
         DontProcess: True
-        PlaceholderPath: 
+        PlaceholderPath: Assets/Plugins/Microsoft.UnityPlugins.Common.dll
         SDK: AnySDK
     iOS:
       enabled: 0

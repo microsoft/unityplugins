@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0DC3A9AA-D5DE-5841-CC53-179C2F3B9C6C}</ProjectGuid>
+    <ProjectGuid>{F0320EE2-5A44-A041-FDAC-5027555C3223}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -72,16 +72,15 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.UnityPlugins.AzureMobileServices">
-      <HintPath>Assets\Plugins\Microsoft.UnityPlugins.AzureMobileServices.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.UnityPlugins.Common">
       <HintPath>Assets\Plugins\Microsoft.UnityPlugins.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.UnityPlugins.Core">
+      <HintPath>Assets\Plugins\Microsoft.UnityPlugins.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UWPAzure\Scripts\AzureMobileServiceDemoScript.cs" />
-    <Compile Include="Assets\UWPAzure\Scripts\TodoItem.cs" />
+    <Compile Include="Assets\UWPCoreTest\Scripts\CoreScenariosTesting.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

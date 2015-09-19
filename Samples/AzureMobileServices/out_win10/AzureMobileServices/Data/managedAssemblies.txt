@@ -1,11 +1,10 @@
 Assembly-CSharp.dll
-UnityEngine.Analytics.dll
 Microsoft.WindowsAzure.Mobile.dll
-Microsoft.UnityPlugins.AzureMobileServices.dll
 Microsoft.WindowsAzure.Mobile.Ext.dll
 UnityEngine.UI.dll
 UnityEngine.Networking.dll
-Microsoft.UnityPlugins.Common.dll
 System.Net.Http.Extensions.dll
 System.Net.Http.Primitives.dll
 Newtonsoft.Json.dll
+Microsoft.UnityPlugins.AzureMobileServices.dll
+Microsoft.UnityPlugins.Common.dll

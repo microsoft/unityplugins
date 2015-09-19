@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using UnityPlayer;
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
-namespace Template
+namespace AzureMobileServices
 {
 	/// <summary>
 	/// Provides application-specific behavior to supplement the default Application class.
