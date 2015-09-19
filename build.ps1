@@ -229,11 +229,13 @@ if($ads -or $all)
 	New-Item -ItemType Directory -Force -Path Samples\Advertising\Assets\Plugins\WSA\x64
 	New-Item -ItemType Directory -Force -Path Samples\Advertising\Assets\Plugins\WSA\ARM
 
-	# Advertising x86 files
+	# Advertising Editor files
 	xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.pdb Samples\Advertising\Assets\Plugins
 	exitIfFailed "xcopying file(s)"
 	xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.dll Samples\Advertising\Assets\Plugins
 	exitIfFailed "xcopying file(s)"
+	
+	# Advertising x86 files
 	xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x86\*.pdb Samples\Advertising\Assets\Plugins\WSA\x86
 	exitIfFailed "xcopying file(s)"
 	xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x86\*.dll Samples\Advertising\Assets\Plugins\WSA\x86
@@ -252,10 +254,6 @@ if($ads -or $all)
 	WriteMessage "==========================================" "magenta"
 
 	# Advertising x64 files
-	xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.pdb Samples\Advertising\Assets\Plugins
-	exitIfFailed "xcopying file(s)"
-	xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.dll Samples\Advertising\Assets\Plugins
-	exitIfFailed "xcopying file(s)"
 	xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x64\*.pdb Samples\Advertising\Assets\Plugins\WSA\x64
 	exitIfFailed "xcopying file(s)"
 	xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\x64\*.dll Samples\Advertising\Assets\Plugins\WSA\x64
@@ -266,10 +264,6 @@ if($ads -or $all)
 	exitIfFailed "xcopying file(s)"
 
 	# Advertising ARM files
-	xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.pdb Samples\Advertising\Assets\Plugins
-	exitIfFailed "xcopying file(s)"
-	xcopy /Y Binaries\Editor\Microsoft.UnityPlugins.Advertising\Release\*.dll Samples\Advertising\Assets\Plugins
-	exitIfFailed "xcopying file(s)"
 	xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\ARM\*.pdb Samples\Advertising\Assets\Plugins\WSA\ARM
 	exitIfFailed "xcopying file(s)"
 	xcopy /Y Binaries\Microsoft.UnityPlugins.Advertising\Release\ARM\*.dll Samples\Advertising\Assets\Plugins\WSA\ARM
