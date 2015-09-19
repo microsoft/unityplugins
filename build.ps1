@@ -183,9 +183,10 @@ if($core -or $all)
 	& $unity_exe  -batchmode -projectPath $currentPath\Samples\CoreTest -exportPackage Assets  $currentPath\UnityPackages\Microsoft.UnityPlugins.Core.unityPackage -quit  | Out-Null
 	exitIfFailed "Exporting Core package" 
 
-	WriteMessage "Exporting Cortana package" "magenta"
-	& $unity_exe  -batchmode -projectPath $currentPath\Samples\Cortana -exportPackage Assets  $currentPath\UnityPackages\Microsoft.UnityPlugins.Cortana.unityPackage -quit | Out-Null
-	exitIfFailed "Exporting Cortana package"
+	#temporarily commenting out cortana package
+	#WriteMessage "Exporting Cortana package" "magenta"
+	#& $unity_exe  -batchmode -projectPath $currentPath\Samples\Cortana -exportPackage Assets  $currentPath\UnityPackages\Microsoft.UnityPlugins.Cortana.unityPackage -quit | Out-Null
+	#exitIfFailed "Exporting Cortana package"
 
 	WriteMessage "Exporting Core UnityPackage done. Package should be in UnityPackages folder." "green"
 }
