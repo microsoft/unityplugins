@@ -1,5 +1,7 @@
-# Unity plugins for Windows Platforms.
-At the time, four of the plugins Store/Core/Azure and Advertising are in early preview:
+# Unity plugins for Windows Platforms (PREVIEW)
+At the time, four of the plugins Store/Core/Azure and Advertising are in early preview. The code is stabilizing
+but we may introduce big changes before the 1.0 release. Please file any issues or feature requests on the github
+repo.
 
 Documentation for Usage of the APIs is present at: http://microsoft.github.io/unityplugins
 
