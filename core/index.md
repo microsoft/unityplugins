@@ -151,7 +151,13 @@ public class Speech
     public static void ListenForDictation(Action<SpeechArguments> OnSpeechResults);
     public static void Stop();
 }
+```
 
+###Text Utilities
+
+These are synchronous utilities to read and write text and binary bytes to and from the system. The names are pretty self explanatory. As mentioned earlier, these are synchronous and WILL block the thread that you are calling these from. It would be a bad idea to use these to load large amount of data from the UI thread.
+
+```C#
 public class TextUtils
 {
     public static void WriteAllText(string fileName, string text);
@@ -159,7 +165,13 @@ public class TextUtils
     public static string ReadAllText(string fileName);
     public static byte[] ReadAllBytes(string fileName);
 }
+```
 
+###Tile Notifications
+
+Note that the tile APIs are designed to simplify how windows tile functionality really works. There are multiple tile templates with a variety of ways in which text and images will be show up on the Live Tile. The full catalog is [here](https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.notifications.tiletemplatetype.aspx). The functions below assume that when you supply a tile template, you MUST supply EXACTLY as many strings and EXACTLY as many images that tile template requires. If there is a mismatch in the number of strings/image paths, the tile update will fail silently. If things are not working, make sure you check the numbers carefully. Finally, if you are using a tile template that needs an image, you will have to copy them to the exported project AFTER exporting. There is no way for us to access any of the assets that are bundled with the Unity project itself. So, this is an additional step. Essentially, this means that after you have exported the Unity project to Windows 10, copy over the images used by the tiles in appropriate folders which the APIs are calling. We would suggest copying over the images to the Assets folder in the exported Windows 10 project to keep things simple. 
+
+```C#
 public class Tiles
 {
     public static void StartPeriodicUpdate(string url, PeriodicUpdateRecurrence periodicUpdateRecurrenceType);
