@@ -40,9 +40,13 @@ namespace Microsoft.UnityPlugins
 
         static Sharing()
         {
-            // Setup the event handler for data request
-            DataTransferManager.GetForCurrentView().DataRequested += 
-                new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(Sharing.OnDataRequested); ;
+            Utils.RunOnWindowsUIThread(() =>
+            {
+                DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+                // Setup the event handler for data request
+                dataTransferManager.DataRequested +=
+                    new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(Sharing.OnDataRequested); ;
+            });
         }
 
         async private static void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
@@ -71,6 +75,7 @@ namespace Microsoft.UnityPlugins
                     }
                 case SharingType.Image:
                     {
+                        DataRequestDeferral deferral = request.GetDeferral();
                         StorageFile imageFile = await Package.Current.InstalledLocation.GetFileAsync(ImageFilePath);
 
                         if (imageFile == null)
@@ -81,6 +86,9 @@ namespace Microsoft.UnityPlugins
 
                         DataPackage requestData = request.Data;
 
+                        requestData.Properties.Title = String.IsNullOrEmpty(Title) ? String.Empty : Title;
+                        requestData.Properties.Description = String.IsNullOrEmpty(Description) ? String.Empty : Description;
+
                         List<IStorageItem> imageItems = new List<IStorageItem>();
                         imageItems.Add(imageFile);
                         requestData.SetStorageItems(imageItems);
@@ -90,6 +98,7 @@ namespace Microsoft.UnityPlugins
                         requestData.SetBitmap(imageStreamRef);
 
                         didSucceedOperation = true;
+                        deferral.Complete();
                         break;
                     }
                 case SharingType.HTML:
