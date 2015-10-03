@@ -100,12 +100,12 @@ namespace Microsoft.UnityPlugins
             }
 
             // for a text only template, images will not be supplied.
-            if (image != null)
+            if ( !string.IsNullOrEmpty(image))
             {
                 var imageNodes = toastXml.GetElementsByTagName("image");
-                if (imageNodes.Length != 0)
+                if (imageNodes.Length != 1)
                 {
-                    throw new ArgumentException("more images supplied than images");
+                    throw new ArgumentException("invalid number of images");
                 }
 
                 imageNodes[0].Attributes.GetNamedItem("src").NodeValue = image;
