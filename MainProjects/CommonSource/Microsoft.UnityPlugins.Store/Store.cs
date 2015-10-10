@@ -416,7 +416,15 @@ namespace Microsoft.UnityPlugins
                 {
                     licenseFilePath = (licenseFilePath == null) ? "WindowsStoreProxy.xml" : licenseFilePath;
 
-                    StorageFile licenseFile = await Package.Current.InstalledLocation.GetFileAsync(licenseFilePath);
+                    StorageFile licenseFile; 
+                    if ( System.IO.Path.IsPathRooted(licenseFilePath))
+                    {
+                        licenseFile = await StorageFile.GetFileFromPathAsync(licenseFilePath); 
+                    }
+                    else
+                    {  
+                        licenseFile = await Package.Current.InstalledLocation.GetFileAsync(licenseFilePath);
+                    }
                     await CurrentAppSimulator.ReloadSimulatorAsync(licenseFile);
 
                     // switch on the license simulation
