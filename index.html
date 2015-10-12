@@ -43,19 +43,38 @@
 <a id="welcome-to-unity-plugins-for-windows-store-apps-and-azure" class="anchor" href="#welcome-to-unity-plugins-for-windows-store-apps-and-azure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Unity Plugins for Windows Store apps and Azure.</h3>
 
 <blockquote>
+
 The plugins are in preview mode and we are taking feedback actively and iterating over them before a 1.0 release. Please let us know of any feedback by filing issues and features request on github. Of course, it would be awesome if you actually made a change and sent a pull request.
 </blockquote>
 
+<p>Unity Plugins for Windows Store Apps (Desktop and Phone) wrap Windows Store APIs in a convenient way for rapid game development. Although Windows Store APIs are fairly straight forward to use from a Windows Store app, things work slightly differently with Unity based games. The main reason is that a majority of the development happens in Unity Editor but the final testing can only be done when the app is running as a Windows Store app. Trying to do Windows Store integration within Unity is usually error prone. Following illustration might help understand the value of these plugins:
 
-<p>
-Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. This is required so that Windows APIs that require the Windows UI thread can run on it and then call any status callbacks back on the Unity thread.
+<img src="images/why_unity_plugins.png" /> 
 </p>
 
 <p>
-You should place the following line just after <em>Window.Current.Activate()</em> in <em>InitializeUnity</em> function in App.xaml.cs
+
+When using plugins on Windows, it is important to understand that when you run your game/app within the editor, it uses <a href="http://mono-project.com">open source Mono project</a> as the underlying .NET platform. See the image below for illustration. However, Windows Store and Windows Phone apps run on top of .NET for Windows Store and the <a href=https://en.wikipedia.org/wiki/Windows_Runtime>WinRT APIs</a> that are available only to Windows Store Apps. What this means is that the Plugins or even your games, when running within the Unity Editor CANNOT call WinRT APIs. To call Windows Store/WinRT APIs, you will have to export your game as a Windows Store project and then compile the exported project in Visual Studio.
+
+<br>
+<br>
+<img src="images/unity_mono_winstore_net.png" />
+
 </p>
 
+<p>
+Your game logic runs within the Unity thread and all of your code will run within the context of this thread. When your code calls Windows Store APIs by using the plugins, we need to run these Windows Store APIs on the Windows UI thread. Our code understands how to get a handle to the Windows UI thread but has no clue about the Unity app thread. So, you need to initialize the plugin code with this thread so that the calls can go back and forth between your game logic and Windows Store APIs. See illustration below:
 
+<br>
+<br>
+
+<img src="images/unity_thread_windows_thread.png" />
+
+<br>
+
+<p>
+Thus, Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. To do this, first export your project (see illustration below) and then in the exported project, open App.xaml.cs. Finally, you should place the following line just after <em>Window.Current.Activate()</em> in <em>InitializeUnity</em> function in App.xaml.cs
+</p>
 
 <em>
 Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
@@ -69,6 +88,10 @@ Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.Invoke
 <img src="images/export_to_unity.png" />
 
 
+<p>
+  
+  At this point of time, your app should have everything setup correctly and your app should invoke Windows Store APIs without any issues. If you hit an issue, create an <a href=https://github.com/microsoft/unityplugins/issues>issue on github </a> and we will get to it.
+</p>
 
       </section>
     </div>
@@ -79,8 +102,7 @@ Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.Invoke
         <p class="copyright">Unity Plugins maintained by <a href="https://github.com/Microsoft">Microsoft</a></p>
       </footer>
     </div>
-
-    
-
+   
   </body>
+
 </html>
