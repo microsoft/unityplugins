@@ -4,15 +4,103 @@ title: Core Plugin
 ---
 
 ##Introduction
+
+The Core Plugin for Unity contains a group of functionality that we consider core to the integration of an app with the Windows specific features that would help an app Stand out from the crowd and also help them engage the users better. The core plugin contains the following features within it:
+
+![Core plugin parts](images/core_plugin_components.png) 
+
+## Concepts
+
+Here are what the various parts of the Core Plugin do:
+
+* Live Tiles: Windows allows people to pin applications on the Start Menu. A user can decide to give your pinned application icon (Tile) different amount of screen space by sizing it appropriately. Once pinned, your app has the ability to dynamically change the application Tile to one of the system specified templates and adorn it with images and text. This is an unobtrusive way for apps to keep the users engaged by surfacing new and dynamic information every time the  user clicks/taps the start button.
+* Toast: This is a small flyout that appears momentarily when something in the app requires urgent action. Unacted upon toasts end up in the Action Center so the user can review them later. Toasts are high impact to user and should be used sparingly and carefully.
+* Badges: Like live tile, you can display a number on the tile. This can be used to indicate custom app logic e.g. Lives left, or gifts recieved etc. This is also an unobtrusive way to keep the user engaged by offering them a clue on the application tile itself.
+* Roaming: Windows provides each application a small amount of cloud storage without needing to do any explicit configuraton. You simply write to a special folder, called the RoamingSettings and Windows automatically will roam the data to another Windows or Windows Phone where the user is logged in. The storage is relatively small, so this feature is best suited for scores, user profiles, last interacted state etc.
+* TextUtils: Ability to save Text and Binary data in a mostly synchronous way to the disk.
+* Cortana: Using the power of Cortana Speech to Text, we allow you to add voice interactions to your games
+* Sharing: Windows allows apps to be able to share data with each other by offering them an ability to register as either a source or target for sharing. The sharing component allows an app to register to be an easy source of data for sharing.
+
+## Before you use the plugin
 >Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. This is required so that Windows APIs that require the Windows UI thread can run on it and then call any callbacks back on the Unity thread.
 >
->You should place the following line just after *Window.Current.Activate()* in *InitializeUnity* function in App.xaml.cs in the exported Windows Universal project.
+>To do this, you should place the following line just after *Window.Current.Activate()* in *InitializeUnity* function in App.xaml.cs in the exported Windows Universal project.
 
 ```C#
 Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
 ```
 
-##APIs
+
+##How to use the APIs
+
+We wrote the plugins with a consistent API surface in mind to ease development. Any of our APIs that can indicate success or failure use a callback mechanism. The callbacks are passed the result of the API call and we always return the result by wrapping it one of the two container classes [*CallbackResponse* or *CallbackResponse<T>*](https://github.com/Microsoft/unityplugins/blob/master/EditorProjects/Microsoft.UnityPlugins.Common/CallbackResponse.cs). There are a small number of exceptions where APIs directly return a result instead of using a callback, but majority of the APIs follow this model. Here is how the callback data structure looks like in case you don't want to click the link above.
+
+```C#
+public enum CallbackStatus
+{
+    Unknown = -1,
+    Failure = 0,
+    Success = 1,
+    TimedOut = 2
+}
+
+public class CallbackResponse
+{
+    public CallbackStatus Status { get; set; }
+    public Exception Exception { get; set; }
+}
+
+public class CallbackResponse<T> : CallbackResponse
+{
+    public T Result { get; set; }
+}
+```
+
+So, if your callback gets invoked, you should make sure to use a pattern similar to check your results:
+
+```C#
+SomePluginComponent.SomeAPICall((response) =>
+{
+
+    if (response.Status == CallbackStatus.Failure)
+    {
+        // An error has occured, take appropriate action
+		// details of the error are available in the response.Exception
+        return;
+    }
+	
+    // If we reach here, the response.Status is success.
+	// If the callback takes a CallbackResponse<T>, then 
+	// the result will be contained in response.Result.
+	// However, if the callback takes a CallbackResponse, 
+	// the API does not return any results and trying to 
+	// dereference response.Result will hit a NullReferenceException.
+});
+```
+
+In the above snippet, we provide an overview of how to handle the results coming back from the a generic plugin API call.
+
+## Note about Tile APIs
+Note that the tile APIs are designed to simplify how windows tile functionality really works. There are multiple tile templates with a variety of ways in which text and images will be show up on the Live Tile. To understand this, see the illustration below. One single tile can potentially display multiple images as well as multiple text items. The full catalog is documented on [msdn](https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.notifications.tiletemplatetype.aspx). The functions below assume that when you supply a tile template, **you MUST supply EXACTLY as many strings and EXACTLY as many image paths that tile template requires**. If there is a mismatch in the number of strings/image paths, the tile update will fail silently. If things are not working, make sure you check the numbers carefully. 
+
+![Tiles with multiple images and text](images/live_tile_multi_image_multi_text.png) 
+
+Finally, if you are using a tile template that needs an image, you will have to copy them to the exported project AFTER exporting. There is no way for us to access any of the assets that are bundled with the Unity project itself. So, this is an additional step. Essentially, this means that after you have exported the Unity project to Windows 10, copy over the images used by the tiles in appropriate folders which the APIs are calling. We would suggest copying over the images to the Assets folder in the exported Windows 10 project to keep things simple. 
+
+## Note about Toast APIs
+
+Just like the Tile APIs, toast APIs support more than one text strings. However, they only allow apps to set one image. The number of string supplied in the API call MUST match the number of strings expected in the template definition else the API will fail silently. For a comprehensive list of Toast templates, see this [msdn page](https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.notifications.toasttemplatetype.aspx).
+
+## Note about Roaming Settings
+
+Saving the data is only one half of the Roaming equation. The second part of roaming is to take an action when new Roaming Data arrives on a device. Make sure to register an event handler for the *OnDataChanged* event in the RoamingSettings class to be notified whenever the roaming data changes.
+
+
+## Samples
+A sample is included in the [github repository](https://github.com/Microsoft/unityplugins) under *Samples/CoreTest* folder. Cortana samples are present under *Samples/Cortana*. A Windows Store exported project with the appropriate settings is present in the *Samples/CoreTest/out_win10* for Core and *Samples/Cortana/out_win10* folder for cortana.
+
+
+##API Reference
 
 ###Enumerations
 
@@ -169,7 +257,7 @@ public class TextUtils
 
 ###Tile Notifications
 
-Note that the tile APIs are designed to simplify how windows tile functionality really works. There are multiple tile templates with a variety of ways in which text and images will be show up on the Live Tile. The full catalog is [here](https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.notifications.tiletemplatetype.aspx). The functions below assume that when you supply a tile template, you MUST supply EXACTLY as many strings and EXACTLY as many images that tile template requires. If there is a mismatch in the number of strings/image paths, the tile update will fail silently. If things are not working, make sure you check the numbers carefully. Finally, if you are using a tile template that needs an image, you will have to copy them to the exported project AFTER exporting. There is no way for us to access any of the assets that are bundled with the Unity project itself. So, this is an additional step. Essentially, this means that after you have exported the Unity project to Windows 10, copy over the images used by the tiles in appropriate folders which the APIs are calling. We would suggest copying over the images to the Assets folder in the exported Windows 10 project to keep things simple. 
+
 
 ```C#
 public class Tiles
@@ -200,5 +288,4 @@ public class Toasts
 	
 ```
 
-### Samples
-A sample is included in the [github repository](https://github.com/Microsoft/unityplugins) under *Samples/CoreTest* folder. Cortana samples are present under *Samples/Cortana*. A Windows Store exported project with the appropriate settings is present in the *Samples/CoreTest/out_win10* for Core and *Samples/Cortana/out_win10* folder for cortana.
+

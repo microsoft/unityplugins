@@ -31,7 +31,7 @@ To use License Simulator functionality, you MUST first call the *LoadLicenseXMLF
 
 Before you can use any of the plugins, you will have to register the Unity AppCallbacks with the plugin. This is required so that Windows APIs that require the Windows UI thread can run on it and then call any callbacks back on the Unity thread.
 
-You should place the following line just after *Window.Current.Activate()* in *InitializeUnity* function in App.xaml.cs in the exported Windows Universal project.
+To do this, you should place the following line just after *Window.Current.Activate()* in *InitializeUnity* function in App.xaml.cs in the exported Windows Universal project.
 
 ```C#
 Microsoft.UnityPlugins.Utils.Initialize((action) => AppCallbacks.Instance.InvokeOnAppThread(new AppCallbackItem(() => action()), false));
@@ -50,7 +50,7 @@ To make use of the Store APIs, there is a flow of APIs that needs to be maintain
 
 ![Plugin use flowchart](images/plugin_use_flow_chart.png) 
 
-##Howto use the APIs
+##How to use the APIs
 
 We wrote the plugins with a consistent API surface in mind to ease development. Any of our APIs that can indicate success or failure use a callback mechanism. The callbacks are passed the result of the API call and we always return the result by wrapping it one of the two container classes [*CallbackResponse* or *CallbackResponse<T>*](https://github.com/Microsoft/unityplugins/blob/master/EditorProjects/Microsoft.UnityPlugins.Common/CallbackResponse.cs). There are a small number of exceptions where APIs directly return a result instead of using a callback, but majority of the APIs follow this model. Here is how the callback data structure looks like in case you don't want to click the link above.
 
@@ -78,7 +78,7 @@ public class CallbackResponse<T> : CallbackResponse
 So, if your callback gets invoked, you should make sure to use a pattern similar to check your results:
 
 ```C#
-Store.LoadListingInformation((response) =>
+SomePluginComponent.SomeAPICall((response) =>
 {
 
     if (response.Status == CallbackStatus.Failure)
@@ -97,7 +97,7 @@ Store.LoadListingInformation((response) =>
 });
 ```
 
-In the above snippet, we provide an overview of how to handle the results coming back from the Store.LoadListingInformation plugin API call.
+In the above snippet, we provide an overview of how to handle the results coming back from the a generic plugin API call.
 
 ## API Reference
 ### Enumerations
