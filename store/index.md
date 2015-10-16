@@ -99,6 +99,9 @@ SomePluginComponent.SomeAPICall((response) =>
 
 In the above snippet, we provide an overview of how to handle the results coming back from the a generic plugin API call.
 
+##Sample
+A sample is included in the [github repository](https://github.com/Microsoft/unityplugins) under Samples/StoreTest folder. A Windows Store exported project with the appropriate settings is present in the *Samples/StoreTest/out_win10* folder.
+
 ## API Reference
 ### Enumerations
 ```C#
@@ -247,6 +250,3 @@ public static void LoadLicenseXMLFile(Action<CallbackResponse> callback,
 ```
 
 > Note that although we take great effort towards making sure that the API reference is up to date, the [github repository](https://github.com/Microsoft/unityplugins) is the final authority. In particular, the [Store.cs File](https://github.com/Microsoft/unityplugins/blob/master/EditorProjects/Microsoft.UnityPlugins.Store/Store.cs) in the official repository is the final authoritative source in case documentation and plugin don't seem to be agreeing.
-
-## Sample
-A sample is included in the [github repository](https://github.com/Microsoft/unityplugins) under Samples/StoreTest folder. A Windows Store exported project with the appropriate settings is present in the *Samples/StoreTest/out_win10* folder.

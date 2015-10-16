@@ -288,4 +288,5 @@ public class Toasts
 	
 ```
 
+> Note that although we take great effort towards making sure that the API reference is up to date, the [github repository](https://github.com/Microsoft/unityplugins) is the final authority. In particular, the Tiles.cs, Toasts.cs, RoamingSettings.cs, Notifications.cs, TextUtils.cs, Sharing.cs and Speech.cs files in the official repository are the final authoritative source in case documentation and plugin don't seem to be agreeing.
 
