@@ -17,11 +17,11 @@ public class CoreScenariosTesting : MonoBehaviour {
         // exactly, the updateTile function is going to ignore the call silently without throwing an error
 
         // TESTED - Works - Simple 4 line - text Live Tile
-        Tiles.UpdateTile(TileTemplateType.TileSquareText01, new string[] {"MyTile", "tile1", "tile2", "tile3" });
+        //Tiles.UpdateTile(TileTemplateType.TileSquareText01, new string[] {"MyTile", "tile1", "tile2", "tile3" });
 
 
         // a tile with an image
-        //Tiles.UpdateTile(TileTemplateType.TileSquareImage, null, new string[] { "Assets/150x150.png"});
+        Tiles.UpdateTile(TileTemplateType.TileSquareImage, null, new string[] { "Assets/coolicon150x150.png"});
 
         Debug.Log("LiveTilesUpdated");
     }
@@ -181,5 +181,28 @@ public class CoreScenariosTesting : MonoBehaviour {
         }, true);
 
 
+    }
+
+    public void OnShareButtonPressed()
+    {
+        //            public static string Title;
+        //public static string Description;
+        //public static string Text;
+        //public static string Url;
+
+
+        Sharing.Title = "title";
+
+        //Sharing.Text = "text";
+        Sharing.Description = "Description";
+        Sharing.Url = "http://microsoft.com";
+
+        //text
+        Sharing.TextToShare = "This text needs to be shared. Do it now.";
+
+        // image
+        Sharing.ImageFilePath = @"Assets\curiosity_view.png";
+        //Sharing
+        Sharing.ShowShareUI(SharingType.Image, (response) => { });
     }
 }

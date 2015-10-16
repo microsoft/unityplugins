@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13a45c13-3265-47b8-bc48-a553b569df55}</ProjectGuid>
+    <ProjectGuid>{13A45C13-3265-47B8-BC48-A553B569DF55}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CoreTest</RootNamespace>
@@ -151,6 +151,8 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Content Include="Assets\coolicon150x150.png" />
+    <Content Include="Assets\curiosity_view.png" />
     <Content Include="Assets\MediumTile.scale-100.png">
     </Content>
     <Content Include="Assets\SmallLogo.scale-100.png">
