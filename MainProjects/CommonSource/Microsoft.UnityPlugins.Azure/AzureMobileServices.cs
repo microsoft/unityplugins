@@ -26,7 +26,7 @@ namespace Microsoft.UnityPlugins
                     {
                         user = await
                             mobileServiceClient.LoginAsync(
-                                Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.Facebook);
+                                (Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider)authenticationProvider);
                     }
                     catch (Exception ex)
                     {
