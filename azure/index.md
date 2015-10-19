@@ -84,7 +84,7 @@ In the above snippet, we provide an overview of how to handle the results coming
 ##Samples
 A sample is included in the [github repository](https://github.com/Microsoft/unityplugins) under *Samples/AzureMobileServices* folder. A Windows Store exported project with the appropriate settings is present in the *Samples/AzureMobileServices/out_win10* folder.
 
-##API Reference
+##API Reference and Usage
 
 ###Enumerations
 ```C#
@@ -120,21 +120,57 @@ public class MobileServiceUser
 ZuMo HTTP endpoints can be set to require authentication or not require authentication. Most games and applications require user authentication to create a customized profile. ZuMo has built in authentication for Facebook, Twitter, Google and Live. You will have to configure some information on the ZuMo portal to use these authentication mechanisms and then finally make this API call from the client to authenticate the user.
 
 ```C#
-
-    public static void AuthenticateWithServiceProvider(MobileServiceAuthenticationProvider authenticationProvider, 
-        Action<MobileServiceUser> OnAuthenticationFinished);
+    public static void AuthenticateWithServiceProvider(MobileServiceAuthenticationProvider authenticationProvider,
+            Action<CallbackResponse<MobileServiceUser>> OnAuthenticationFinished)
 ```		
 
 
 *Insert/Lookup/Update/Delete/Where<T>* are generic functions that take a generic object as input. You can specify any C# object to these APIs in the ZuMo service. Usually, a table of the same name as the type needs to be present on the ZuMo side. When the HTTP call is finished, supplied event handler is invoked.
 
+> Note that the ZuMo APIs are actually JSON based. All the below APIs take C# classes as parameters. The converseion from C# to JSON back and forth is done using [Newtonsoft's JSON.NET](http://www.newtonsoft.com/json) serializer library and thus you can annotate your classes using the Newtonsoft's JSON.net annotation syntax for better control.
+
+
 ```C#
-    public static void Insert<T>(T item, Action OnInsertFinished);
-    public static void Lookup<T>(string id, Action<T> OnLookupFinished);
-    public static void Update<T>(T item, Action OnUpdateFinished);
-    public static void Delete<T>(T item, Action OnDeleteFinished);
-    public static void Where<T>(Expression<Func<T, bool>> predicate, Action<List<T>> OnWhereFinished);
+    public static void Insert<T>(T item, Action<CallbackResponse> OnInsertFinished)
+```	
+
+Inserts data in the ZuMo table. Once inserted, the API handles the return and once the API returns, your item object will be modified and its *id* member will be set to the unique *id* assigned to the item that got inserted on the server side.
+
+	
+```C#	
+    public static void Lookup<T>(String id, Action<CallbackResponse<T>> OnLookupFinished)
 ```
+
+Lookup, looks an item in the table of type T on the server. The key *id* is used for the lookup and if the lookup is successfuly, the found item will be passed to the OnLookupFinished callback.	
+
+	
+```C#	
+    public static void Update<T>(T item, Action<CallbackResponse> OnUpdateFinished)
+```
+	
+Update will take the provided instace item and lookup on the server an item with the *id* specified in the provided instance. If successfully found, the item is updated on the server and persisited. Finally, on success, the OnUpdateFinished call is invoked.
+	
+```C#	
+    public static void Delete<T>(T item, Action<CallbackResponse> OnDeleteFinished)
+```
+	
+Delete will find the item with id equivalent to the one provided in the *id* field in the supplied instance. If found, the item will be deleted on the server.
+	
+```C#	
+    public static void Where<T>(Expression<Func<T, bool>> predicate, Action<CallbackResponse<List<T>>> OnWhereFinished)
+```
+
+The syntax here is a bit intricate. The first parameter is essentially a function that takes a item of type *T* as input and checks it against a boolean condition that the function has to implement, depending on whether the condition is fulfilled, true or false is returned. You can consider this function as a query function. The function will be called on each item in the database to see if it matches the query; if the function returns true for a given item, the item is considered to match the query and is added to the response. An example of such a function is below:
+
+```C#
+// notice that the first argument is a lambda/anonymosu function. It takes the *item* of type TodoItem
+// as an input and checks if the item's text property contains the word "Updated" and returns true/false 
+// based on that. Once all the matching items are collected, the callback is invoked with the results
+AzureMobileServices.Where<TodoItem>(item => item.Text.Contains("Updated"), (response) =>
+{
+});
+```
+
 
 > Note that although we take great effort towards making sure that the API reference is up to date, the [github repository](https://github.com/Microsoft/unityplugins) is the final authority. In particular, the [AzureMobileServices.cs File](https://github.com/Microsoft/unityplugins/blob/master/EditorProjects/Microsoft.UnityPlugins.AzureMobileServices.Editor/AzureMobileServices.cs) in the official repository is the final authoritative source in case documentation and plugin don't seem to be agreeing.
 
