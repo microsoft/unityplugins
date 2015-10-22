@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10">
-  <Identity Name="SatkritiSolutionsLLC.UnityPluginsTestApp" Publisher="CN=84BAE5FB-B227-4D89-914C-AC29FCCE7F03" Version="1.1.4.0" />
-  <mp:PhoneIdentity PhoneProductId="3a77b709-f461-456d-b3d7-d3d70da67a16" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="SatkritiSolutionsLLC.UnityPluginsTestApp" Publisher="CN=84BAE5FB-B227-4D89-914C-AC29FCCE7F03" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="118e16a0-82fb-42e9-abf6-3f44639fcb6f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>UnityPluginsTestApp</DisplayName>
     <PublisherDisplayName>Satkriti Solutions LLC</PublisherDisplayName>
@@ -19,6 +19,12 @@
         <uap:DefaultTile Wide310x150Logo="Assets\WideTile.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait" />
+          <uap:Rotation Preference="landscape" />
+          <uap:Rotation Preference="portraitFlipped" />
+          <uap:Rotation Preference="landscapeFlipped" />
+        </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

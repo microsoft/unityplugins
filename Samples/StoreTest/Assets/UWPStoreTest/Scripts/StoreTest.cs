@@ -5,14 +5,14 @@ using Microsoft.UnityPlugins;
 
 public class StoreTest : MonoBehaviour
 {
-    public Button loadLicenseXmlButton;
+    //public Button loadLicenseXmlButton;
     public Text text;
 
     private void prettyPrintErrors(string apiName, CallbackResponse response)
     {
         if(response.Status == CallbackStatus.Failure)
         {
-            text.text = "API call failed.";
+            text.text = "\n" + apiName + "API call failed.\n" + response.Exception.Message + "\n" + text.text + "\n";
             Debug.LogError(apiName + " API call failed");
 
             if (response.Exception != null)
@@ -24,6 +24,14 @@ public class StoreTest : MonoBehaviour
         }
     }
 
+    private void prettyPrintSuccess(string apiName, CallbackResponse response)
+    {
+        if (response.Status == CallbackStatus.Failure)
+        {
+            text.text = "\n" + apiName + "API call succeeded.\n" + text.text + "\n";
+        }
+    }
+
     public void LoadLicenseXmlButton()
     {
         Debug.Log("LoadLicenseXmlButton clicked");
@@ -31,10 +39,14 @@ public class StoreTest : MonoBehaviour
         Store.LoadLicenseXMLFile((response) =>
         {
             Debug.Log("Invoking Callback");
-            
-            text.text = "Load License XML File finished";
 
-            prettyPrintErrors("LoadLicenseXml", response);
+            if (response.Status == CallbackStatus.Failure)
+            {
+                prettyPrintErrors("LoadLicenseXml", response);
+                return;
+            }
+
+            prettyPrintSuccess("LoadLicenseXml", response);
         });
     }
 
@@ -43,18 +55,17 @@ public class StoreTest : MonoBehaviour
         Debug.Log("Is In Trial button clicked");
 
 #if UNITY_EDITOR
-        Debug.Log("Windows Store APIs cannot be called from the Unity Editor");
-        text.text = "Cannot call WinStore API from Editor";
+        prettyPrintErrors("IsInTrialApp", new CallbackResponse { Status = CallbackStatus.Failure, Exception = new System.Exception("Windows Store APIs cannot be called in Unity Editor")});
         return;
 #endif
 
         if (Store.IsInTrialMode())
         {
-            text.text = "Yes! App is in trial mode";
+            text.text = "\nYes! App is in trial mode" + text.text + "\n";
         }
         else
         {
-            text.text = "No! App is not in trial mode";
+            text.text = "\nNo! App is not in trial mode" + text.text + "\n";
         }
     }
 
@@ -71,7 +82,8 @@ public class StoreTest : MonoBehaviour
                 return;
             }
 
-            text.text = "Finished Loading Listing Information";
+            prettyPrintSuccess("LoadListingInformation", response);
+            text.text = "\nFinished Loading Listing Information" + text.text + "\n";
             Debug.Log(response.Result.Description.ToString());
             foreach (var productListingKey in response.Result.ProductListings.Keys)
             {
@@ -86,10 +98,11 @@ public class StoreTest : MonoBehaviour
 
 #if UNITY_EDITOR
         Debug.Log("Windows Store APIs cannot be called from the Unity Editor");
-        text.text = "Cannot call WinStore API from Editor";
+        prettyPrintErrors("GetLicenseInformationForApp", new CallbackResponse { Status = CallbackStatus.Failure, Exception = new System.Exception("Windows Store APIs cannot be called in Unity Editor") });
         return;
 #endif
-        text.text = "Got License Information";
+
+        text.text = "\nGot License Information" + text.text + "\n";
         var licenseInformation = Store.GetLicenseInformation();
         Debug.Log("LicenseInformation: IsActive " + licenseInformation.IsActive.ToString());
         Debug.Log("LicenseInformation: IsTrial " + licenseInformation.IsTrial.ToString());
@@ -107,12 +120,12 @@ public class StoreTest : MonoBehaviour
 
 #if UNITY_EDITOR
         Debug.Log("Windows Store APIs cannot be called from the Unity Editor");
-        text.text = "Cannot call WinStore API from Editor";
+        prettyPrintErrors("GetProductLicenseForApp", new CallbackResponse { Status = CallbackStatus.Failure, Exception = new System.Exception("Windows Store APIs cannot be called in Unity Editor") });
         return;
 #endif
 
         Store.GetProductLicense("Durable1");
-        text.text = "Got product license";
+        text.text = "\nGot product license" + text.text + "\n";
     }
 
     public void GetAppReceiptForApp()
@@ -127,7 +140,8 @@ public class StoreTest : MonoBehaviour
                 return;
             }
 
-            text.text = "got app receipt";
+            prettyPrintSuccess("GetAppReceipt", response);
+            text.text = "\ngot app receipt" + text.text + "\n";
             Debug.Log("App Receipt: " + response.Result);
         });
     }
@@ -144,7 +158,8 @@ public class StoreTest : MonoBehaviour
                 return;
             }
 
-            text.text = "got product receipt";
+            prettyPrintSuccess("GetProductReceipt", response);
+            text.text = "\ngot product receipt" + text.text + "\n";
             Debug.Log("Product Receipt: " + response.Result);
         }));
     }
@@ -160,12 +175,13 @@ public class StoreTest : MonoBehaviour
                 return;
             }
 
+            prettyPrintSuccess("LoadUnfulfilledConsumables", response);
             Debug.Log("Loaded Unfulfilled consumables");
             foreach (var u in response.Result)
             {
                 Debug.Log("offerId: " + u.OfferId + "transactionId: " + u.TransactionId);
             }
-            text.text = "Loaded Unfulfilled consumables";
+            text.text = "\nLoaded Unfulfilled consumables" + text.text + "\n";
         });
     }
 
@@ -180,8 +196,9 @@ public class StoreTest : MonoBehaviour
                 return;
             }
 
+            prettyPrintSuccess("ReportConsumableFulfillment", response);
             Debug.Log("Reported Consumable Fulfillment Result: " + response.Result.ToString());
-            text.text = "Reported Consumable fulfillment Result: " + response.Result.ToString();
+            text.text = "\nReported Consumable fulfillment Result: " + response.Result.ToString() + text.text + "\n";
         });
     }
 
@@ -192,7 +209,8 @@ public class StoreTest : MonoBehaviour
         {
             if (response.Status == CallbackStatus.Success)
             {
-                text.text = "Purchase Succeeded";
+                prettyPrintSuccess("RequestAppPurchase", response);
+                text.text = "\nPurchase Succeeded";
                 if (!string.IsNullOrEmpty(response.Result))
                 {
                     Debug.Log("App Purchase Receipt: " + response.Result);
@@ -201,7 +219,7 @@ public class StoreTest : MonoBehaviour
             else
             {
                 prettyPrintErrors("RequestAppPurchase", response);
-                text.text = "Purchase failed";
+                text.text = "\nPurchase failed" + text.text + "\n";
             }
         });
     }
@@ -217,7 +235,8 @@ public class StoreTest : MonoBehaviour
                 return;
             }
 
-            text.text = "Purchase status: " + response.Result.Status.ToString();
+            prettyPrintSuccess("RequestProductPurchase", response);
+            text.text = "\nPurchase status: " + response.Result.Status.ToString() + text.text + "\n";
             Debug.Log("Purchase Status: " + response.Result.Status.ToString());
             Debug.Log("Purchase OfferId: " + response.Result.OfferId);
             Debug.Log("Purchase ReceiptXml: " + response.Result.ReceiptXml);

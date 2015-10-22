@@ -1,6 +1,5 @@
 Assembly-CSharp.dll
 Microsoft.UnityPlugins.Store.dll
 UnityEngine.UI.dll
-UnityEngine.Networking.dll
-Newtonsoft.Json.dll
 Microsoft.UnityPlugins.Common.dll
+UnityEngine.Networking.dll

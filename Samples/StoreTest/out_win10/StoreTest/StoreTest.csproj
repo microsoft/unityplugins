@@ -8,8 +8,8 @@
     <ProjectGuid>{13A45C13-3265-47B8-BC48-A553B569DF55}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Template</RootNamespace>
-    <AssemblyName>Template</AssemblyName>
+    <RootNamespace>StoreTest</RootNamespace>
+    <AssemblyName>StoreTest</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -19,16 +19,12 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>StoreTest_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>995B8C3E5123153A3FFE47EB3ECB901D13A08386</PackageCertificateThumbprint>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <AppxBundlePlatforms>x86|arm</AppxBundlePlatforms>
-    <AppxBundle>Never</AppxBundle>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <PackageCertificateThumbprint>39A8151CF19FE8831D3C481F88B6E97BD133ABA6</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
@@ -38,7 +34,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -50,7 +46,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Master|ARM'">
     <OutputPath>bin\ARM\Master\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -60,10 +56,45 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Master|x64'">
+    <OutputPath>bin\x64\Master\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -73,7 +104,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -85,7 +116,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Master|x86'">
     <OutputPath>bin\x86\Master\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;UNITY_METRO;UNITY_WSA;UNITY_UWP;UNITY_WSA_10_0</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -95,13 +126,25 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)' == 'x64'">
+    <UnityBits>64</UnityBits>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)' != 'x64'">
+    <UnityBits>32</UnityBits>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+  </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
     </ApplicationDefinition>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <None Include="Package.StoreAssociation.xml" />
     <Content Include="WindowsStoreProxy.xml" />
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -122,11 +165,11 @@
     </Content>
     <Compile Include="Properties\AssemblyInfo.cs">
     </Compile>
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml">
+    </Content>
     <Reference Include="Assembly-CSharp">
       <HintPath>.\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>.\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>.\UnityEngine.dll</HintPath>
@@ -134,14 +177,14 @@
     <Reference Include="WinRTLegacy">
       <HintPath>.\WinRTLegacy.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.UnityPlugins.Common">
-      <HintPath>.\Microsoft.UnityPlugins.Common.dll</HintPath>
+    <Reference Include="Microsoft.UnityPlugins.Store">
+      <HintPath>.\Microsoft.UnityPlugins.Store.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>.\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.UnityPlugins.Store">
-      <HintPath>.\Microsoft.UnityPlugins.Store.dll</HintPath>
+    <Reference Include="Microsoft.UnityPlugins.Common">
+      <HintPath>.\Microsoft.UnityPlugins.Common.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>.\UnityEngine.Networking.dll</HintPath>
@@ -152,7 +195,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="project.json" />
     <None Include="StoreTest_StoreKey.pfx" />
     <None Include="WSATestCertificate.pfx" />
   </ItemGroup>
@@ -185,16 +227,16 @@
   <ItemGroup>
     <UnprocessedFile Include="$(ProjectDir)Unprocessed\*" />
   </ItemGroup>
-  <Target Name="BeforeResolveReferences">
+  <Target Name="BeforeResolveReferences" Condition="'$(BuildingProject)' == 'true'">
     <Message Importance="high" Text="UnityInstallationDir &quot;$(UnityInstallationDir)&quot;." />
     <Message Importance="high" Text="UnityWSAPlayerDir &quot;$(UnityWSAPlayerDir)&quot;." />
     <Message Importance="high" Text="UnityProjectDir &quot;$(UnityProjectDir)&quot;." />
     <Message Importance="high" Text="Copying unprocessed assemblies..." />
     <Copy SourceFiles="@(UnprocessedFile)" DestinationFolder="$(ProjectDir)" />
   </Target>
-  <Target Name="BeforeCompile">
+  <Target Name="BeforeCompile" Condition="'$(BuildingProject)' == 'true'">
     <Message Importance="high" Text="Running AssemblyConverter..." />
-    <Exec Command="&quot;$(UnityWSAToolsDir)\AssemblyConverter.exe&quot; -platform=uap -path=&quot;.&quot; -path=&quot;..\Players\UAP\$(PlatformTarget)\$(Configuration)&quot; &quot;$(ProjectDir)Assembly-CSharp.dll&quot; &quot;$(ProjectDir)UnityEngine.Analytics.dll&quot; &quot;$(ProjectDir)UnityEngine.dll&quot; &quot;$(ProjectDir)UnityEngine.UI.dll&quot; &quot;$(ProjectDir)UnityEngine.Networking.dll&quot;" />
+    <Exec Command="&quot;$(UnityWSAToolsDir)\AssemblyConverter.exe&quot; -platform=uap -lock=&quot;$(ProjectDir)project.lock.json&quot; -bits=$(UnityBits) -path=&quot;.&quot; -path=&quot;..\Players\UAP\$(PlatformTarget)\$(Configuration)&quot; &quot;$(ProjectDir)Assembly-CSharp.dll&quot; &quot;$(ProjectDir)UnityEngine.dll&quot; &quot;$(ProjectDir)UnityEngine.UI.dll&quot; &quot;$(ProjectDir)UnityEngine.Networking.dll&quot;" />
     <Message Importance="high" Text="AssemblyConverter done." />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
