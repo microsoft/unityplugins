@@ -77,7 +77,8 @@ function exitIfFailed($message)
 
 # IMPORTANT: MAKE SURE TO SET THESE VARIABLES TO YOUR ENVIRONMENT TO AVOID
 # BUILD FAILURES
-$msbuild_vs = "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe"
+$msbuild_version = "14.0"
+$msbuild_vs = "C:\Program Files (x86)\MSBuild\$msbuild_version\Bin\MSBuild.exe"
 $unity_exe = "C:\Program Files\Unity\Editor\unity.exe"
 $nuget_exe = "c:\tools\nuget.exe"
 
@@ -94,7 +95,7 @@ WriteMessage "Finished Building Editor Projects" "green"
 if($store -or $all)
 {
 	WriteMessage "Store specified on the command line, building store now" "magenta"
-	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Store.sln
+	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Store.sln -msbuildversion $msbuild_version
 	exitIfFailed 'Nuget restore Store'
 
 	# AnyCPU - RELEASE
@@ -142,7 +143,7 @@ if($store -or $all)
 if($core -or $all)
 {
 	WriteMessage "Core specified on the command line, building Core now" "magenta"
-	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Core.sln
+	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Core.sln -msbuildversion $msbuild_version
 	exitIfFailed 'Nuget restore Core'
 
 	# AnyCPU - RELEASE
@@ -194,7 +195,7 @@ if($core -or $all)
 if($ads -or $all)
 {
 	WriteMessage "Ads specified on the command line, building Ads now" "magenta"
-	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Advertising.sln
+	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.Advertising.sln -msbuildversion $msbuild_version
 	exitIfFailed 'Nuget restore Core'
 
 	# x86 - RELEASE
@@ -286,7 +287,7 @@ if($ads -or $all)
 if($azure -or $all)
 {
 	WriteMessage "Azure specified on the command line, building Azure now" "magenta"
-	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.AzureMobileServices.sln
+	& $nuget_exe restore MainProjects\Win10\Microsoft.UnityPlugins.AzureMobileServices.sln -msbuildversion $msbuild_version
 	exitIfFailed 'Nuget restore Core'
 
 	# AnyCPU - RELEASE
