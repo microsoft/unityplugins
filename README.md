@@ -29,7 +29,7 @@ Mostly a wrapper for Facebook
 * Make sure that the $unity_exe variable is set to the correct path for Unity in the build.ps1 script
 
 * Install Windows Azure SDK for Visual Studio 2015 from http://azure.microsoft.com/en-us/downloads/ 
-* Install the latest Microsoft Advertising SDK from http://adsinapps.microsoft.com/en-us/
+* Install the latest Microsoft Advertising SDK from https://developer.microsoft.com/en-us/store/monetize/ads-in-apps
 * Make sure you install the latest version of nuget  from http://blog.nuget.org/20150902/nuget-3.2RC.html (3.2+) and set its path in the $nuget_exe variable in the build.ps1 script
 * You DO NOT need to use the Cortana package. All Cortana functionality is present in the Core plugin and that is sufficient. Use the Cortana unity package as a learning sample.
 
