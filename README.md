@@ -4,23 +4,23 @@ Documentation for Usage of the APIs is present at: http://microsoft.github.io/un
 
 *Following documentation only tells you how to build the packages*
 
-##Store
+## Store
 Contains APIs for inapp purchases, license checks, catalog listing and receipt validation
 
-##Core
+## Core
 Contains utilities, tiles, toasts, badges etc.
 
-##AzureMobile
+## AzureMobile
 Contains CRUD operations for Azure Mobile Services
 
-##Ads
+## Ads
 Contains Ad APIs for Microsoft Ads
 
-##Social (In progress, not in the build scripts)
+## Social (In progress, not in the build scripts)
 Mostly a wrapper for Facebook 
 
 
-#Build Instructions
+# Build Instructions
 * We use powershell to build all the projects and export UnityPackages. Make sure you set the variables in the build.ps1 script
 * IMPORTANT: Make sure that you have set the path to the msbuild included with Visual Studio 
    as the $msbuild_vs variable in the build.ps1 script. Plugins do not build with .net msbuild
